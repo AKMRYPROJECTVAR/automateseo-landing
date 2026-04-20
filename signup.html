@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Get Started — AutomateSEO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#00E06A;--green-dim:#00B854;--green-dark:#00802E;--black:#0A0A0A;--black2:#111111;--card:#161616;--border:#242424;--text:#F0F0F0;--muted:#888;--muted2:#555;--white:#fff;--radius:10px;--radius-lg:16px}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--white)}
+.nav-logo span{color:var(--green)}
+.nav-back{font-size:13px;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--green)}
+.progress-bar{background:var(--black2);border-bottom:1px solid var(--border);padding:20px 5%}
+.progress-inner{max-width:500px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+.step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid var(--border);color:var(--muted);background:var(--black2);flex-shrink:0}
+.step-dot.active{border-color:var(--green);color:var(--green);background:rgba(0,224,106,0.1)}
+.step-dot.done{border-color:var(--green);background:var(--green);color:var(--black)}
+.step-line{flex:1;height:2px;background:var(--border);max-width:80px}
+.step-line.done{background:var(--green)}
+.main{max-width:680px;margin:0 auto;padding:48px 20px 80px}
+.step-page{display:none}
+.step-page.active{display:block}
+.page-title{font-family:'Syne',sans-serif;font-size:clamp(22px,4vw,34px);font-weight:800;color:var(--white);margin-bottom:8px;letter-spacing:-0.5px}
+.page-sub{font-size:15px;color:var(--muted);margin-bottom:32px;line-height:1.6}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:18px}
+.card-title{font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+input[type=text],input[type=email],input[type=url],select,textarea{width:100%;background:var(--black2);border:1px solid var(--border);border-radius:var(--radius);padding:13px 16px;font-size:14px;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--green)}
+input::placeholder,textarea::placeholder{color:var(--muted2)}
+select{appearance:none;cursor:pointer}
+textarea{resize:vertical;min-height:110px;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{margin-bottom:14px}
+.char-count{text-align:right;font-size:11px;color:var(--muted);margin-top:4px}
+.field-hint{font-size:12px;color:var(--muted);margin-top:4px}
+.radio-option{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;margin-bottom:8px;transition:border-color 0.2s}
+.radio-option:hover{border-color:var(--muted)}
+.radio-option.selected{border-color:var(--green);background:rgba(0,224,106,0.05)}
+.radio-option input{display:none}
+.radio-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.radio-option.selected .radio-dot{border-color:var(--green)}
+.rdinner{width:7px;height:7px;border-radius:50%;background:var(--green);display:none}
+.radio-option.selected .rdinner{display:block}
+.list-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--black2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px}
+.list-item-text{flex:1;font-size:14px}
+.icon-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all 0.2s}
+.icon-btn:hover{border-color:var(--green);color:var(--green)}
+.icon-btn.del:hover{border-color:#ff5555;color:#ff5555}
+.add-row{display:flex;gap:10px;margin-top:10px}
+.add-row input{flex:1}
+.btn-add{background:rgba(0,224,106,0.1);border:1px solid rgba(0,224,106,0.3);color:var(--green);padding:13px 18px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif}
+.btn-add:hover{background:rgba(0,224,106,0.2)}
+.priority-item{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--black2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;cursor:pointer;transition:all 0.2s}
+.priority-item:hover{border-color:var(--muted)}
+.priority-item.sel{border-color:var(--green);background:rgba(0,224,106,0.05)}
+.pnum{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);flex-shrink:0}
+.priority-item.sel .pnum{border-color:var(--green);background:var(--green);color:var(--black)}
+.pbadge{font-size:11px;font-weight:700;color:var(--green);background:rgba(0,224,106,0.1);padding:3px 10px;border-radius:100px;display:none}
+.priority-item.sel .pbadge{display:block}
+.explainer-step{display:flex;gap:14px;padding:18px;background:var(--black2);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:12px}
+.enum{width:34px;height:34px;border-radius:50%;background:rgba(0,224,106,0.1);border:2px solid rgba(0,224,106,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--green);flex-shrink:0}
+.explainer-step h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.explainer-step p{font-size:13px;color:var(--muted);line-height:1.5}
+.echeck{font-size:12px;color:var(--muted);margin-top:4px}
+.echeck::before{content:'✓ ';color:var(--green);font-weight:700}
+.comp-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--black2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px}
+.comp-fav{width:30px;height:30px;border-radius:8px;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--muted);flex-shrink:0;overflow:hidden}
+.comp-fav img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.comp-domain{font-size:13px;font-weight:600;color:var(--white)}
+.comp-desc{font-size:12px;color:var(--muted)}
+.loading-wrap{text-align:center;padding:60px 20px}
+.loading-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,rgba(0,224,106,0.2),rgba(0,184,84,0.3));margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-size:28px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.loading-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--white);margin-bottom:8px}
+.loading-sub{font-size:14px;color:var(--muted);margin-bottom:28px}
+.bar-wrap{background:var(--border);border-radius:100px;height:5px;max-width:380px;margin:0 auto 14px;overflow:hidden}
+.bar-inner{height:100%;background:linear-gradient(90deg,var(--green),var(--green-dim));border-radius:100px;width:0%;transition:width 0.4s ease}
+.loading-status{font-size:13px;color:var(--muted)}
+.btn-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:22px;border-top:1px solid var(--border)}
+.btn-back{background:transparent;border:1px solid var(--border);color:var(--muted);padding:13px 22px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-back:hover{border-color:var(--muted);color:var(--white)}
+.btn-next{background:var(--green);color:var(--black);padding:13px 28px;border-radius:var(--radius);font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:'Inter',sans-serif}
+.btn-next:hover{background:var(--green-dim)}
+.step-label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.step-label::before{content:'✓';color:var(--green)}
+.url-wrap{max-width:580px;margin:0 auto;text-align:center;padding:60px 20px}
+.url-wrap h1{font-family:'Syne',sans-serif;font-size:clamp(28px,5vw,50px);font-weight:800;color:var(--white);letter-spacing:-1px;margin-bottom:14px;line-height:1.1}
+.url-wrap h1 span{color:var(--green)}
+.url-wrap p{font-size:15px;color:var(--muted);margin-bottom:36px;line-height:1.6}
+.url-form{display:flex;border:2px solid var(--green);border-radius:var(--radius);overflow:hidden;background:var(--black2)}
+.url-form input{flex:1;background:transparent;border:none;padding:16px 18px;font-size:15px;color:var(--white);font-family:'Inter',sans-serif;outline:none}
+.url-form input::placeholder{color:var(--muted2)}
+.url-form button{background:var(--green);color:var(--black);font-weight:700;font-size:14px;padding:16px 24px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
+.url-form button:hover{background:var(--green-dim)}
+.btn-full{width:100%;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:16px;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;border:none;font-family:'Inter',sans-serif;margin-bottom:14px}
+.btn-full:hover{opacity:0.9}
+.secure-note{background:var(--black2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
+.checkbox-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:18px}
+.checkbox-row input{width:16px;height:16px;accent-color:var(--green);margin-top:3px;flex-shrink:0;cursor:pointer}
+.checkbox-row label{font-size:13px;color:var(--muted);line-height:1.5}
+.checkbox-row a{color:var(--green)}
+.sep{height:1px;background:var(--border);margin:28px 0}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}.btn-row{flex-direction:column;gap:10px}.btn-back,.btn-next{width:100%;text-align:center;justify-content:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Automate<span>SEO</span></div>
+  <div class="nav-back" onclick="window.location.href='/'">← Back to home</div>
+</nav>
+
+<div id="progressBar" class="progress-bar" style="display:none">
+  <div class="progress-inner">
+    <div class="step-dot" id="dot1">1</div>
+    <div class="step-line" id="line12"></div>
+    <div class="step-dot" id="dot2">2</div>
+    <div class="step-line" id="line23"></div>
+    <div class="step-dot" id="dot3">3</div>
+    <div class="step-line" id="line35"></div>
+    <div class="step-dot" id="dot5">5</div>
+  </div>
+</div>
+
+<!-- STEP 1: URL -->
+<div class="step-page active" id="step1">
+  <div class="url-wrap">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,224,106,0.1);border:1px solid rgba(0,224,106,0.25);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--green);font-weight:600;margin-bottom:24px"><span style="width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block"></span>3-day trial for $0.99 — Cancel anytime</div>
+    <h1>Let's Analyse Your <span>Website</span></h1>
+    <p>Enter your website URL and our AI will research your business, competitors, and the best SEO topics to rank for.</p>
+    <div class="url-form">
+      <input type="url" id="websiteUrl" placeholder="https://yourwebsite.com.au"/>
+      <button onclick="startAnalysis()">Analyse My Site →</button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:14px">🔒 No credit card required to start &nbsp;·&nbsp; Takes 30 seconds</p>
+  </div>
+</div>
+
+<!-- STEP 1B: LOADING -->
+<div class="step-page" id="step1b">
+  <div class="main">
+    <div class="loading-wrap">
+      <div class="loading-icon">🔍</div>
+      <div class="loading-title">Analysing Your Business</div>
+      <div class="loading-sub">Our AI is learning about your business to create the perfect content strategy...</div>
+      <div class="bar-wrap"><div class="bar-inner" id="loadingBar"></div></div>
+      <div class="loading-status" id="loadingStatus">🤖 Scanning your website...</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2: BUSINESS -->
+<div class="step-page" id="step2">
+  <div class="main">
+    <div class="page-title">Your Business Information</div>
+    <div class="page-sub">We use this to write articles tailored perfectly to your business and audience.</div>
+
+    <div class="card">
+      <div class="card-title">🏢 Brand & Language</div>
+      <div class="form-row">
+        <div class="form-group" style="margin:0">
+          <label>Brand Name</label>
+          <input type="text" id="brandName" placeholder="Your Business Name" oninput="state.brandName=this.value"/>
+          <div id="compatHint" style="font-size:12px;color:var(--green);margin-top:4px;display:none">✓ Compatible with AutomateSEO</div>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Article Language</label>
+          <select id="language" onchange="state.language=this.value">
+            <option value="en-AU">🇦🇺 English (Australian)</option>
+            <option value="en-US">🇺🇸 English (American)</option>
+            <option value="en-GB">🇬🇧 English (British)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📍 Target Market</div>
+      <div class="form-row">
+        <div class="form-group" style="margin:0">
+          <label>Country</label>
+          <select id="country" onchange="state.country=this.value">
+            <option value="AU">🇦🇺 Australia</option>
+            <option value="US">🇺🇸 United States</option>
+            <option value="GB">🇬🇧 United Kingdom</option>
+            <option value="NZ">🇳🇿 New Zealand</option>
+            <option value="CA">🇨🇦 Canada</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Customer Reach</label>
+          <div class="radio-option" onclick="selRadio(this,'nationwide')" id="r_nationwide">
+            <input type="radio" name="reach"/><div class="radio-dot"><div class="rdinner"></div></div>
+            <span style="font-size:13px;font-weight:500">Nationwide or wide area</span>
+          </div>
+          <div class="radio-option selected" onclick="selRadio(this,'local')" id="r_local">
+            <input type="radio" name="reach" checked/><div class="radio-dot"><div class="rdinner"></div></div>
+            <span style="font-size:13px;font-weight:500">Local to a specific city</span>
+          </div>
+        </div>
+      </div>
+      <div id="cityGroup">
+        <label>Target Cities</label>
+        <input type="text" id="targetCities" placeholder="e.g. Melbourne, Sydney" oninput="state.targetCities=this.value"/>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📝 Business Description</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px">Review and edit to match your business perfectly</div>
+      <textarea id="businessDesc" maxlength="1000" oninput="state.businessDesc=this.value;document.getElementById('cc').textContent=this.value.length" placeholder="Our AI will generate this based on your website..."></textarea>
+      <div class="char-count"><span id="cc">0</span>/1000</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="color:#ff5555">✕ What You Don't Sell</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Related items or services you don't offer (helps clarify your business scope)</div>
+      <div id="exclusionList"></div>
+      <div class="add-row">
+        <input type="text" id="newExc" placeholder="e.g. Paid Search Advertising (PPC)" onkeypress="if(event.key==='Enter')addExc()"/>
+        <button class="btn-add" onclick="addExc()">+ Add Item</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⭐ Which Product Should We Focus On First?</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Choose one product or service for your first article. We'll create content for the others too.</div>
+      <div id="priorityList"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goTo('step1')">Back</button>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="step-label">Step 2: Define Offerings</div>
+        <button class="btn-next" onclick="goTo('step3')">Next Step →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3: EXPLAINER + COMPETITORS -->
+<div class="step-page" id="step3">
+  <div class="main">
+    <div class="page-title">Here's How We Create Your Content</div>
+    <div class="page-sub">Everything happens automatically — you just review and approve.</div>
+
+    <div class="explainer-step">
+      <div class="enum">1</div>
+      <div>
+        <h4>Deep Research on YOUR Business</h4>
+        <p>Our AI studies your business, customers, and competitors to find exactly what people search for.</p>
+        <div class="echeck">Analyses 500+ competitor search terms</div>
+      </div>
+    </div>
+    <div class="explainer-step">
+      <div class="enum">2</div>
+      <div>
+        <h4>Write 1 Expert Article Daily</h4>
+        <p>1,500+ word articles that solve real customer problems and rank on Google.</p>
+        <div class="echeck">High-quality content — not AI fluff</div>
+        <div class="echeck">1,500–2,500 words per article</div>
+      </div>
+    </div>
+    <div class="explainer-step">
+      <div class="enum">3</div>
+      <div>
+        <h4>Get High-Authority Backlinks Monthly</h4>
+        <p>Trusted third-party sites link to your articles, building your domain authority automatically.</p>
+        <div class="echeck">Every site DA 30+ verified and spam-checked</div>
+        <div class="echeck">Gradual, natural placement — exactly how Google wants it</div>
+        <div class="echeck">Cancel anytime — remove any link or opt out</div>
+      </div>
+    </div>
+    <div class="explainer-step">
+      <div class="enum">4</div>
+      <div>
+        <h4>Watch Traffic Explode</h4>
+        <p>Google ranks you higher. ChatGPT recommends you. More customers find you organically — zero ad spend.</p>
+        <div class="echeck">3x average traffic increase in 90 days</div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="page-title" style="font-size:22px;margin-bottom:6px">Your Competitors</div>
+    <div class="page-sub" style="margin-bottom:20px">We found these competitors in your industry. Review and add or remove as needed.</div>
+
+    <div id="competitorList"></div>
+
+    <div class="card">
+      <div class="card-title">➕ Add a Competitor</div>
+      <div class="add-row">
+        <input type="text" id="newComp" placeholder="competitor.com (root domain only)" onkeypress="if(event.key==='Enter')addComp()"/>
+        <button class="btn-add" onclick="addComp()">Add Competitor</button>
+      </div>
+      <div class="field-hint" style="margin-top:8px">Enter only root domains (e.g., competitor.com). Subdomains not allowed.</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goTo('step2')">Back</button>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="step-label">Step 3: Select Competitors</div>
+        <button class="btn-next" onclick="goTo('step5')">Next Step →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5: COMPLETE ACCOUNT -->
+<div class="step-page" id="step5">
+  <div class="main" style="max-width:520px">
+    <div style="text-align:center;margin-bottom:32px">
+      <div style="font-size:44px;margin-bottom:14px">🎉</div>
+      <div class="page-title" style="text-align:center">Almost Done!</div>
+      <div class="page-sub" style="text-align:center;margin-bottom:0">Enter your email to create your account and access your personalised content calendar.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✉️ Email Address</div>
+      <input type="email" id="userEmail" placeholder="your@email.com" style="margin-bottom:0"/>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="agreeTerms"/>
+      <label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+    </div>
+
+    <button class="btn-full" onclick="createAccount()">Create My Account & Get Started →</button>
+
+    <div class="secure-note">
+      <span style="font-size:20px">🔐</span>
+      <div>
+        <div style="font-weight:600;color:var(--text);margin-bottom:2px">Secure Login</div>
+        <div>We'll send you a secure login link via email. No passwords needed!</div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="border:none;padding-top:14px;margin-top:14px">
+      <button class="btn-back" onclick="goTo('step3')">Back</button>
+      <div class="step-label">Step 5: Complete Account</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BACKEND='https://automateseo-backend-production.up.railway.app';
+const state={websiteUrl:'',brandName:'',language:'en-AU',country:'AU',reach:'local',targetCities:'',businessDesc:'',exclusions:[],services:[],priorityService:'',competitors:[],email:''};
+
+function goTo(id){
+  document.querySelectorAll('.step-page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  updateProg(id);
+  window.scrollTo(0,0);
+}
+
+function updateProg(id){
+  const bar=document.getElementById('progressBar');
+  if(id==='step1'||id==='step1b'){bar.style.display='none';return;}
+  bar.style.display='block';
+  const map={step2:2,step3:3,step5:5};
+  const cur=map[id]||2;
+  [['1',1],['2',2],['3',3],['5',5]].forEach(([n,num])=>{
+    const d=document.getElementById('dot'+n);
+    d.className='step-dot';
+    if(num<cur){d.classList.add('done');d.innerHTML='✓';}
+    else if(num===cur){d.classList.add('active');d.innerHTML=n;}
+    else d.innerHTML=n;
+  });
+  [['12',1],['23',2],['35',3]].forEach(([k,from])=>{
+    document.getElementById('line'+k).className='step-line'+(from<cur?' done':'');
+  });
+}
+
+async function startAnalysis(){
+  const url=document.getElementById('websiteUrl').value.trim();
+  if(!url){document.getElementById('websiteUrl').focus();return;}
+  state.websiteUrl=url;
+  goTo('step1b');
+  const msgs=['Scanning your website...','Identifying your business type...','Researching industry keywords...','Analysing competitor landscape...','Generating your business profile...','Almost done...'];
+  const bar=document.getElementById('loadingBar');
+  const st=document.getElementById('loadingStatus');
+  for(let i=0;i<msgs.length;i++){
+    await sleep(600);
+    bar.style.width=((i+1)/msgs.length*100)+'%';
+    st.textContent='🤖 '+msgs[i];
+  }
+  await sleep(500);
+  await genBusinessData(url);
+  goTo('step2');
+}
+
+async function genBusinessData(url){
+  try{
+    const domain=url.replace(/https?:///,'').replace(/www./,'').split('/')[0];
+    const brand=domain.split('.')[0].replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
+    document.getElementById('brandName').value=brand;
+    document.getElementById('compatHint').style.display='block';
+    state.brandName=brand;
+    const resp=await fetch(BACKEND+'/api/analyse-website',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({websiteUrl:url})});
+    if(resp.ok){
+      const d=await resp.json();
+      if(d.description){document.getElementById('businessDesc').value=d.description;document.getElementById('cc').textContent=d.description.length;state.businessDesc=d.description;}
+      if(d.services)popPriority(d.services);
+      if(d.competitors)popCompetitors(d.competitors);
+      if(d.exclusions)d.exclusions.forEach(e=>addExcItem(e));
+    }else{fallback(brand);}
+  }catch(e){
+    const domain=url.replace(/https?:///,'').replace(/www./,'').split('/')[0];
+    fallback(domain.split('.')[0].replace(/-/g,' ').replace(/\b\w/g,l=>l.toUpperCase()));
+  }
+}
+
+function fallback(brand){
+  const desc=brand+' is a professional business providing expert services across Australia. We are committed to delivering high-quality solutions tailored to each client.';
+  document.getElementById('businessDesc').value=desc;
+  document.getElementById('cc').textContent=desc.length;
+  state.businessDesc=desc;
+  popPriority(['Core Service','Premium Package','Consultation','Support & Maintenance']);
+  popCompetitors([]);
+}
+
+function selRadio(el,val){
+  document.querySelectorAll('[id^=r_]').forEach(r=>r.classList.remove('selected'));
+  el.classList.add('selected');
+  state.reach=val;
+  document.getElementById('cityGroup').style.display=val==='local'?'block':'none';
+}
+
+function addExc(){const i=document.getElementById('newExc');const v=i.value.trim();if(!v)return;addExcItem(v);i.value='';}
+function addExcItem(t){state.exclusions.push(t);renderExc();}
+function removeExc(i){state.exclusions.splice(i,1);renderExc();}
+function renderExc(){document.getElementById('exclusionList').innerHTML=state.exclusions.map((e,i)=>'<div class="list-item"><span class="list-item-text">'+e+'</span><button class="icon-btn del" onclick="removeExc('+i+')">🗑</button></div>').join('');}
+
+function popPriority(svcs){state.services=svcs;state.priorityService=svcs[0]||'';renderPriority();}
+function selPriority(el,i){document.querySelectorAll('.priority-item').forEach((p,j)=>p.classList.toggle('sel',j===i));state.priorityService=state.services[i];}
+function renderPriority(){document.getElementById('priorityList').innerHTML=state.services.map((s,i)=>'<div class="priority-item '+(i===0?'sel':'')+'" onclick="selPriority(this,'+i+')"><div class="pnum">'+(i+1)+'</div><div style="flex:1;font-size:14px;font-weight:500">'+s+'</div><div class="pbadge">Highest priority</div></div>').join('');}
+
+function popCompetitors(comps){state.competitors=comps;renderComps();}
+function addComp(){const i=document.getElementById('newComp');let v=i.value.trim().replace(/https?:///,'').replace(/www./,'').split('/')[0];if(!v)return;state.competitors.push({domain:v,desc:'Competitor in your industry'});renderComps();i.value='';}
+function removeComp(i){state.competitors.splice(i,1);renderComps();}
+function renderComps(){const l=document.getElementById('competitorList');if(!state.competitors.length){l.innerHTML='<div style="text-align:center;padding:20px;color:var(--muted);font-size:14px;border:1px dashed var(--border);border-radius:var(--radius);margin-bottom:14px">No competitors yet — add one below or continue.</div>';return;}l.innerHTML=state.competitors.map((c,i)=>'<div class="comp-item"><div class="comp-fav"><img src="https://www.google.com/s2/favicons?domain='+c.domain+'&sz=32" onerror="this.style.display='none';this.parentNode.textContent=''+c.domain[0].toUpperCase()+''"/></div><div style="flex:1"><div class="comp-domain">'+c.domain+'</div><div class="comp-desc">'+c.desc+'</div></div><button class="icon-btn del" onclick="removeComp('+i+')">🗑</button></div>').join('');}
+
+async function createAccount(){
+  const email=document.getElementById('userEmail').value.trim();
+  const agreed=document.getElementById('agreeTerms').checked;
+  if(!email||!email.includes('@')){alert('Please enter a valid email address.');return;}
+  if(!agreed){alert('Please agree to the Terms of Service and Privacy Policy.');return;}
+  state.email=email;
+  try{await fetch(BACKEND+'/api/onboarding',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(state)});}catch(e){}
+  try{
+    const resp=await fetch(BACKEND+'/api/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,websiteUrl:state.websiteUrl})});
+    const d=await resp.json();
+    if(d.url){window.location.href=d.url;}else{alert('Something went wrong. Please contact hello@automateseo.com.au');}
+  }catch(e){alert('Something went wrong. Please contact hello@automateseo.com.au');}
+}
+
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+
+window.onload=()=>{
+  const p=new URLSearchParams(window.location.search);
+  const url=p.get('url');
+  if(url){document.getElementById('websiteUrl').value=url;startAnalysis();}
+};
+</script>
+</body>
+</html>
