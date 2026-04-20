@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Get Started — AutomateSEO</title>
+<title>Get Started â AutomateSEO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
@@ -239,7 +239,7 @@ function renderPriority(){document.getElementById('priorityList').innerHTML=stat
 function popCompetitors(comps){state.competitors=comps;renderComps();}
 function addComp(){var i=document.getElementById('newComp');var v=i.value.trim().replace(/https?:///,'').replace(/www./,'').split('/')[0];if(!v)return;state.competitors.push({domain:v,desc:'Competitor in your industry'});renderComps();i.value='';}
 function removeComp(i){state.competitors.splice(i,1);renderComps();}
-function renderComps(){var l=document.getElementById('competitorList');if(!state.competitors.length){l.innerHTML='<div style="text-align:center;padding:20px;color:var(--muted);font-size:14px;border:1px dashed var(--border);border-radius:var(--radius);margin-bottom:14px">No competitors yet — add one below or continue.</div>';return;}l.innerHTML=state.competitors.map(function(c,i){return '<div class="comp-item"><div class="comp-fav"><img src="https://www.google.com/s2/favicons?domain='+c.domain+'&sz=32" onerror="this.style.display='none'"/></div><div style="flex:1"><div class="comp-domain">'+c.domain+'</div><div class="comp-desc">'+c.desc+'</div></div><button class="icon-btn del" onclick="removeComp('+i+')">&#128465;</button></div>';}).join('');}
+function renderComps(){var l=document.getElementById('competitorList');if(!state.competitors.length){l.innerHTML='<div style="text-align:center;padding:20px;color:var(--muted);font-size:14px;border:1px dashed var(--border);border-radius:var(--radius);margin-bottom:14px">No competitors yet â add one below or continue.</div>';return;}l.innerHTML=state.competitors.map(function(c,i){return '<div class="comp-item"><div class="comp-fav"><img src="https://www.google.com/s2/favicons?domain='+c.domain+'&sz=32" /></div><div style="flex:1"><div class="comp-domain">'+c.domain+'</div><div class="comp-desc">'+c.desc+'</div></div><button class="icon-btn del" onclick="removeComp('+i+')">&#128465;</button></div>';}).join('');}
 async function createAccount(){var email=document.getElementById('userEmail').value.trim();var agreed=document.getElementById('agreeTerms').checked;if(!email||email.indexOf('@')===-1){alert('Please enter a valid email address.');return;}if(!agreed){alert('Please agree to the Terms of Service and Privacy Policy.');return;}state.email=email;try{await fetch(BACKEND+'/api/onboarding',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(state)});}catch(e){}try{var resp=await fetch(BACKEND+'/api/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,websiteUrl:state.websiteUrl})});var d=await resp.json();if(d.url){window.location.href=d.url;}else{alert('Something went wrong. Please contact hello@automateseo.com.au');}}catch(e){alert('Something went wrong. Please contact hello@automateseo.com.au');}}
 document.addEventListener('DOMContentLoaded',function(){var p=new URLSearchParams(window.location.search);var url=p.get('url');if(url){document.getElementById('websiteUrl').value=url;setTimeout(startAnalysis,200);}});
 </script>
