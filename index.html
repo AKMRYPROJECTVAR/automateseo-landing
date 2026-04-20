@@ -10,98 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#00E06A;
-  --green-dim:#00B854;
-  --green-dark:#00802E;
-  --black:#0A0A0A;
-  --black2:#111111;
-  --black3:#181818;
-  --card:#161616;
-  --border:#242424;
-  --text:#F0F0F0;
-  --muted:#888;
-  --muted2:#555;
-  --white:#ffffff;
-  --radius:10px;
-  --radius-lg:16px;
-}
+:root{--green:#00E06A;--green-dim:#00B854;--green-dark:#00802E;--black:#0A0A0A;--black2:#111111;--card:#161616;--border:#242424;--text:#F0F0F0;--muted:#888;--muted2:#555;--white:#ffffff;--radius:10px;--radius-lg:16px}
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-img{max-width:100%}
-
-/* ── NAV ── */
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
 .nav-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--white);letter-spacing:-0.5px}
 .nav-logo span{color:var(--green)}
 .nav-links{display:flex;gap:32px;font-size:14px;color:var(--muted)}
 .nav-links a:hover{color:var(--white)}
 .nav-cta{background:var(--green);color:var(--black);font-weight:700;font-size:14px;padding:10px 22px;border-radius:8px;cursor:pointer;border:none;font-family:'Inter',sans-serif}
-.nav-cta:hover{background:var(--green-dim)}
-
-/* ── HERO ── */
-.hero{max-width:860px;margin:0 auto;padding:100px 5% 80px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,224,106,0.1);border:1px solid rgba(0,224,106,0.25);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--green);font-weight:600;margin-bottom:28px}
-.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
-h1{font-family:'Syne',sans-serif;font-size:clamp(38px,6vw,70px);font-weight:800;line-height:1.08;letter-spacing:-2px;color:var(--white);margin-bottom:22px}
-h1 span{color:var(--green)}
-.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:600px;margin:0 auto 40px;line-height:1.65}
-
-/* ── URL INPUT ── */
-.url-form{display:flex;gap:0;max-width:580px;margin:0 auto 24px;border:1.5px solid var(--green);border-radius:10px;overflow:hidden;background:var(--black2)}
-.url-form input{flex:1;background:transparent;border:none;padding:16px 20px;font-size:15px;color:var(--white);font-family:'Inter',sans-serif;outline:none}
-.url-form input::placeholder{color:var(--muted2)}
-.url-form button{background:var(--green);color:var(--black);font-weight:700;font-size:14px;padding:16px 28px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
-.url-form button:hover{background:var(--green-dim)}
-.hero-note{font-size:13px;color:var(--muted);margin-bottom:60px}
-
-/* ── STATS ROW ── */
-.stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:80px}
-.stat-item{text-align:center}
-.stat-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--green);line-height:1}
-.stat-label{font-size:13px;color:var(--muted);margin-top:4px}
-
-/* ── SECTION ── */
 section{padding:80px 5%}
 .section-inner{max-width:1100px;margin:0 auto}
 .section-tag{font-size:12px;font-weight:700;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px}
 h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;color:var(--white);line-height:1.1;margin-bottom:16px}
 .section-sub{font-size:17px;color:var(--muted);max-width:560px;line-height:1.6;margin-bottom:52px}
-
-/* ── COMPARISON ── */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px;margin:0 auto}
-.compare-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;font-size:14px}
-.compare-panel.good{border-color:rgba(0,224,106,0.4)}
-.compare-head{font-weight:700;font-size:15px;margin-bottom:20px;color:var(--white)}
-.compare-head.red{color:#ff5555}
-.compare-head.green{color:var(--green)}
-.compare-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);color:var(--muted);line-height:1.4}
-.compare-row:last-child{border-bottom:none}
-.compare-icon{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
-.x-icon{background:rgba(255,85,85,0.15);color:#ff5555}
-.tick-icon{background:rgba(0,224,106,0.15);color:var(--green)}
-
-/* ── HOW IT WORKS ── */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.step-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 22px}
-.step-num{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--border);line-height:1;margin-bottom:14px}
-.step-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px}
-.step-desc{font-size:13px;color:var(--muted);line-height:1.55}
-.step-highlight{color:var(--green)}
-
-/* ── REVIEWS ── */
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
-.review-stars{color:var(--green);font-size:14px;margin-bottom:12px;letter-spacing:1px}
-.review-text{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:16px}
-.review-author{display:flex;align-items:center;gap:10px}
-.review-avatar{width:34px;height:34px;border-radius:50%;background:var(--green-dark);color:var(--black);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
-.review-name{font-size:13px;font-weight:600;color:var(--white)}
-.review-role{font-size:12px;color:var(--muted)}
-.review-source{font-size:11px;color:var(--muted2);margin-top:2px}
-
-/* ── PRICING ── */
+.divider{border:none;border-top:1px solid var(--border);margin:0}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto}
 .price-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 28px}
 .price-card.featured{border-color:var(--green);background:#0d1a11}
@@ -119,22 +43,55 @@ h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;
 .price-btn-outline:hover{border-color:var(--green);color:var(--green)}
 .price-btn-green{background:var(--green);color:var(--black)}
 .price-btn-green:hover{background:var(--green-dim)}
-
-/* ── PLATFORMS ── */
+.hero{max-width:860px;margin:0 auto;padding:100px 5% 80px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,224,106,0.1);border:1px solid rgba(0,224,106,0.25);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--green);font-weight:600;margin-bottom:28px}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+h1{font-family:'Syne',sans-serif;font-size:clamp(38px,6vw,70px);font-weight:800;line-height:1.08;letter-spacing:-2px;color:var(--white);margin-bottom:22px}
+h1 span{color:var(--green)}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:600px;margin:0 auto 40px;line-height:1.65}
+.url-form{display:flex;gap:0;max-width:580px;margin:0 auto 24px;border:1.5px solid var(--green);border-radius:10px;overflow:hidden;background:var(--black2)}
+.url-form input{flex:1;background:transparent;border:none;padding:16px 20px;font-size:15px;color:var(--white);font-family:'Inter',sans-serif;outline:none}
+.url-form input::placeholder{color:var(--muted2)}
+.url-form button{background:var(--green);color:var(--black);font-weight:700;font-size:14px;padding:16px 28px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap}
+.stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:80px}
+.stat-item{text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--green);line-height:1}
+.stat-label{font-size:13px;color:var(--muted);margin-top:4px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px;margin:0 auto}
+.compare-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;font-size:14px}
+.compare-panel.good{border-color:rgba(0,224,106,0.4)}
+.compare-head{font-weight:700;font-size:15px;margin-bottom:20px;color:var(--white)}
+.compare-head.red{color:#ff5555}
+.compare-head.green{color:var(--green)}
+.compare-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);color:var(--muted);line-height:1.4}
+.compare-row:last-child{border-bottom:none}
+.compare-icon{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+.x-icon{background:rgba(255,85,85,0.15);color:#ff5555}
+.tick-icon{background:rgba(0,224,106,0.15);color:var(--green)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 22px}
+.step-num{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--border);line-height:1;margin-bottom:14px}
+.step-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.step-highlight{color:var(--green)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.review-stars{color:var(--green);font-size:14px;margin-bottom:12px;letter-spacing:1px}
+.review-text{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:16px}
+.review-author{display:flex;align-items:center;gap:10px}
+.review-avatar{width:34px;height:34px;border-radius:50%;background:var(--green-dark);color:var(--black);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.review-name{font-size:13px;font-weight:600;color:var(--white)}
+.review-role{font-size:12px;color:var(--muted)}
+.review-source{font-size:11px;color:var(--muted2);margin-top:2px}
 .platforms{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:36px}
 .platform-pill{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 20px;font-size:13px;font-weight:600;color:var(--muted)}
-
-/* ── CTA BAND ── */
 .cta-band{background:var(--green);padding:72px 5%;text-align:center}
 .cta-band h2{color:var(--black);font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:14px}
 .cta-band p{color:rgba(0,0,0,0.65);font-size:17px;margin-bottom:36px}
 .cta-band-form{display:flex;gap:0;max-width:520px;margin:0 auto;border:2px solid var(--black);border-radius:10px;overflow:hidden;background:var(--white)}
 .cta-band-form input{flex:1;background:transparent;border:none;padding:16px 20px;font-size:15px;color:var(--black);font-family:'Inter',sans-serif;outline:none}
-.cta-band-form input::placeholder{color:#888}
 .cta-band-form button{background:var(--black);color:var(--white);font-weight:700;font-size:14px;padding:16px 28px;border:none;cursor:pointer;font-family:'Inter',sans-serif}
 .cta-note{font-size:13px;color:rgba(0,0,0,0.5);margin-top:14px}
-
-/* ── FAQ ── */
 .faq-list{max-width:720px;margin:0 auto}
 .faq-item{border-bottom:1px solid var(--border);padding:22px 0}
 .faq-q{font-size:16px;font-weight:600;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
@@ -143,8 +100,6 @@ h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;
 .faq-a{font-size:14px;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
 .faq-item.open .faq-a{max-height:200px;padding-top:14px}
 .faq-item.open .faq-arrow{transform:rotate(45deg);border-color:var(--green);color:var(--green)}
-
-/* ── FOOTER ── */
 footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 5% 32px}
 .footer-inner{max-width:1100px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
@@ -156,34 +111,11 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
 .footer-col a:hover{color:var(--green)}
 .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .footer-legal{font-size:12px;color:var(--muted2)}
-
-/* ── DIVIDER ── */
-.divider{border:none;border-top:1px solid var(--border);margin:0}
-
-/* ── HIGHLIGHT ── */
-.highlight{color:var(--green)}
-
-/* ── RESPONSIVE ── */
-@media(max-width:768px){
-  .nav-links{display:none}
-  .compare{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr 1fr}
-  .reviews-grid{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr}
-  .footer-top{grid-template-columns:1fr 1fr}
-  .url-form{flex-direction:column}
-  .url-form button{border-radius:0}
-}
-@media(max-width:480px){
-  .steps{grid-template-columns:1fr}
-  .footer-top{grid-template-columns:1fr}
-  .stats{gap:28px}
-}
+@media(max-width:768px){.nav-links{display:none}.compare{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.reviews-grid{grid-template-columns:1fr}.pricing-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.url-form{flex-direction:column}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.stats{gap:28px}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Automate<span>SEO</span></div>
   <div class="nav-links">
@@ -192,34 +124,87 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
   </div>
-  <button class="nav-cta" onclick="document.getElementById('hero-input').focus()">Start free trial</button>
+  <button class="nav-cta" onclick="startCheckout()">Start free trial</button>
 </nav>
 
-<!-- HERO -->
+<section id="pricing" style="background:var(--black);padding:60px 5% 80px">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-tag">Simple pricing</div>
+    <h2>Start for $0.99. Cancel anytime.</h2>
+    <p class="section-sub" style="margin:0 auto 48px">Try AutomateSEO free for 3 days, then just $197/month. No lock-in. No agency markup. Cancel with one click.</p>
+    <div class="pricing-grid">
+      <div class="price-card" style="opacity:0.5;pointer-events:none">
+        <div class="price-name" style="color:var(--muted)">Coming soon</div>
+        <div class="price-amount"><sup>$</sup>97</div>
+        <div class="price-period">per month · AUD</div>
+        <ul class="price-features">
+          <li>15 SEO articles per month</li>
+          <li>50 DA backlinks per month</li>
+          <li>Keyword research included</li>
+          <li>WordPress auto-publish</li>
+          <li>Email support</li>
+        </ul>
+        <button class="price-btn price-btn-outline" disabled>Coming soon</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tag">3-day trial — just $0.99</div>
+        <div class="price-name">Growth Plan</div>
+        <div class="price-amount"><sup>$</sup>197</div>
+        <div class="price-period">per month · AUD · after trial</div>
+        <ul class="price-features">
+          <li>30 SEO articles per month</li>
+          <li>1,500+ words per article</li>
+          <li>High-authority backlinks monthly</li>
+          <li>Competitor keyword analysis</li>
+          <li>WordPress + Shopify publish</li>
+          <li>Content gap analyser</li>
+          <li>Priority support</li>
+          <li>Cancel with 1 click</li>
+        </ul>
+        <button class="price-btn price-btn-green" onclick="startCheckout()">Start 3-day trial for $0.99 →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Agency</div>
+        <div class="price-amount"><sup>$</sup>497</div>
+        <div class="price-period">per month · AUD</div>
+        <ul class="price-features">
+          <li>Everything in Growth</li>
+          <li>Up to 5 client websites</li>
+          <li>White-label reporting</li>
+          <li>Dedicated account manager</li>
+          <li>Custom brand voice</li>
+          <li>VIP support</li>
+        </ul>
+        <button class="price-btn price-btn-outline" onclick="startCheckout()">Get started</button>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:28px">7-day money-back guarantee &nbsp;·&nbsp; Prices in AUD &nbsp;·&nbsp; No lock-in contracts</p>
+  </div>
+</section>
+
+<hr class="divider"/>
+
 <section style="padding:0;background:var(--black)">
   <div class="hero">
     <div class="hero-badge"><span class="hero-badge-dot"></span>Australia's #1 Automated SEO Platform</div>
     <h1>Rank Higher on<br/><span>Google & AI Search.</span><br/>On Autopilot.</h1>
     <p class="hero-sub">We publish one expert SEO article to your website every day, build high-authority backlinks, and get your business recommended by ChatGPT, Perplexity, and Google — while you focus on running your business.</p>
-
     <div class="url-form">
-      <input type="text" id="hero-input" placeholder="https://yourwebsite.com.au" />
+      <input type="text" id="hero-input" placeholder="https://yourwebsite.com.au"/>
       <button onclick="handleHeroSubmit()">Get my free plan →</button>
     </div>
-    <p class="hero-note">No credit card required &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Same-day article delivery</p>
-
+    <p style="font-size:13px;color:var(--muted);margin-bottom:60px">No credit card required &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Same-day article delivery</p>
     <div class="stats">
-      <div class="stat-item"><div class="stat-num">216%</div><div class="stat-label">Average traffic increase</div></div>
-      <div class="stat-item"><div class="stat-num">1,400+</div><div class="stat-label">Businesses growing</div></div>
-      <div class="stat-item"><div class="stat-num">30</div><div class="stat-label">Articles per month</div></div>
-      <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Cheaper than an agency</div></div>
+      <div class="stat-item"><div class="stat-num">3x</div><div class="stat-label">Average traffic increase in 90 days</div></div>
+      <div class="stat-item"><div class="stat-num">1,400+</div><div class="stat-label">Businesses growing with us</div></div>
+      <div class="stat-item"><div class="stat-num">30</div><div class="stat-label">Expert articles every month</div></div>
+      <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Cheaper than a traditional agency</div></div>
     </div>
   </div>
 </section>
 
 <hr class="divider"/>
 
-<!-- WITHOUT VS WITH -->
 <section style="background:var(--black2)">
   <div class="section-inner" style="text-align:center">
     <div class="section-tag">The difference</div>
@@ -241,7 +226,7 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
         <div class="compare-row"><div class="compare-icon tick-icon">✓</div><span>ChatGPT and Perplexity recommend your business</span></div>
         <div class="compare-row"><div class="compare-icon tick-icon">✓</div><span>A fraction of the cost of any SEO agency</span></div>
         <div class="compare-row"><div class="compare-icon tick-icon">✓</div><span>Completely hands-free — we handle everything</span></div>
-        <div class="compare-row"><div class="compare-icon tick-icon">✓</div><span>100 DA worth of quality backlinks monthly</span></div>
+        <div class="compare-row"><div class="compare-icon tick-icon">✓</div><span>High-authority backlinks built every month</span></div>
         <div class="compare-row"><div class="compare-icon tick-icon">✓</div><span>Same-day certificate of compliance on all work</span></div>
       </div>
     </div>
@@ -250,302 +235,117 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
 
 <hr class="divider"/>
 
-<!-- HOW IT WORKS -->
 <section id="how" style="background:var(--black)">
   <div class="section-inner">
     <div class="section-tag">How it works</div>
     <h2>From zero to ranking in four steps</h2>
     <p class="section-sub">Our AI studies your business, writes expert content, and publishes it — all without you lifting a finger.</p>
     <div class="steps">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <div class="step-title">Deep research on your business</div>
-        <div class="step-desc">Our AI analyses your site, your customers, and <span class="step-highlight">500+ competitor search terms</span> to find the exact topics that will drive traffic to you.</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <div class="step-title">One expert article, every day</div>
-        <div class="step-desc">1,500–2,500 word articles that solve real customer problems. <span class="step-highlight">Not AI fluff</span> — content good enough to share on LinkedIn.</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <div class="step-title">Quality backlinks, automatically</div>
-        <div class="step-desc">100 Domain Authority worth of <span class="step-highlight">high-authority backlinks</span> built every month. Zero spam. Strict quality policy.</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <div class="step-title">Traffic & AI recommendations grow</div>
-        <div class="step-desc">Google ranks you higher. ChatGPT recommends you. More customers find you <span class="step-highlight">organically — zero ad spend.</span></div>
-      </div>
+      <div class="step-card"><div class="step-num">01</div><div class="step-title">Deep research on your business</div><div class="step-desc">Our AI analyses your site, your customers, and <span class="step-highlight">500+ competitor search terms</span> to find the exact topics that will drive traffic to you.</div></div>
+      <div class="step-card"><div class="step-num">02</div><div class="step-title">One expert article, every day</div><div class="step-desc">1,500+ word articles that solve real customer problems. <span class="step-highlight">Not AI fluff</span> — content good enough to share on LinkedIn.</div></div>
+      <div class="step-card"><div class="step-num">03</div><div class="step-title">Quality backlinks, automatically</div><div class="step-desc"><span class="step-highlight">High-authority backlinks</span> built from real third-party sites every month. Zero spam. Strict quality policy.</div></div>
+      <div class="step-card"><div class="step-num">04</div><div class="step-title">Traffic &amp; AI recommendations grow</div><div class="step-desc">Google ranks you higher. ChatGPT recommends you. More customers find you <span class="step-highlight">organically — zero ad spend.</span></div></div>
     </div>
   </div>
 </section>
 
 <hr class="divider"/>
 
-<!-- REVIEWS -->
 <section id="reviews" style="background:var(--black2)">
   <div class="section-inner">
     <div class="section-tag">Customer reviews</div>
     <h2>Real businesses. Real results.</h2>
     <p class="section-sub">Trusted by over 1,400 businesses across Australia and beyond.</p>
     <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"The quality of the published articles is truly remarkable. I have gained my first customer who called me because of a published article. I can only recommend this service."</p>
-        <div class="review-author">
-          <div class="review-avatar">MB</div>
-          <div>
-            <div class="review-name">Martin Bonauer</div>
-            <div class="review-role">Real Estate — Switzerland</div>
-            <div class="review-source">Verified Trustpilot review</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"The signup process was seamless. The articles being produced are better than any other service I have looked at. This platform is a 10/10 — AutomateSEO is the future of SEO."</p>
-        <div class="review-author">
-          <div class="review-avatar">RG</div>
-          <div>
-            <div class="review-name">Randy Goldberg</div>
-            <div class="review-role">Business Owner — USA</div>
-            <div class="review-source">Verified Trustpilot review</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Content-wise the articles are good, with accurate info and nice formatting. Actually very impressive. We use it for our Shopify store and the blog automation is excellent."</p>
-        <div class="review-author">
-          <div class="review-avatar">AT</div>
-          <div>
-            <div class="review-name">Alexandra Truta</div>
-            <div class="review-role">Copywriter — MiniCRM</div>
-            <div class="review-source">Verified Trustpilot review</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"I am using their tool to rank 5 of my clients' websites with good success so far. They give amazing customer service and respond quickly. Very happy customer."</p>
-        <div class="review-author">
-          <div class="review-avatar">GL</div>
-          <div>
-            <div class="review-name">Gabriel Leor</div>
-            <div class="review-role">Digital Agency — Israel</div>
-            <div class="review-source">Verified Trustpilot review</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"We use Shopify and the automation with blog content straight to approve or edit is great. The articles produced are great — definitely worth the monthly cost without doubt."</p>
-        <div class="review-author">
-          <div class="review-avatar">AB</div>
-          <div>
-            <div class="review-name">Artisan Butcher</div>
-            <div class="review-role">Shopify Store — UK</div>
-            <div class="review-source">Verified Trustpilot review</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Promising signs of improvement in our rankings. Chat feature provides great help promptly. Content of articles is solid needing only minor edits most of the time."</p>
-        <div class="review-author">
-          <div class="review-avatar">PG</div>
-          <div>
-            <div class="review-name">Peter Greenham</div>
-            <div class="review-role">Business Owner — Australia</div>
-            <div class="review-source">Verified Trustpilot review</div>
-          </div>
-        </div>
-      </div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"The quality of the published articles is truly remarkable. I have gained my first customer who called me because of a published article. I can only recommend this service."</p><div class="review-author"><div class="review-avatar">MB</div><div><div class="review-name">Martin Bonauer</div><div class="review-role">Real Estate — Switzerland</div><div class="review-source">Verified Trustpilot review</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"The signup process was seamless. The articles being produced are better than any other service I have looked at. This platform is a 10/10 — AutomateSEO is the future of SEO."</p><div class="review-author"><div class="review-avatar">RG</div><div><div class="review-name">Randy Goldberg</div><div class="review-role">Business Owner — USA</div><div class="review-source">Verified Trustpilot review</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Content-wise the articles are good, with accurate info and nice formatting. Actually very impressive. We use it for our Shopify store and the blog automation is excellent."</p><div class="review-author"><div class="review-avatar">AT</div><div><div class="review-name">Alexandra Truta</div><div class="review-role">Copywriter — MiniCRM</div><div class="review-source">Verified Trustpilot review</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"I am using their tool to rank 5 of my clients websites with good success so far. They give amazing customer service and respond quickly. Very happy customer."</p><div class="review-author"><div class="review-avatar">GL</div><div><div class="review-name">Gabriel Leor</div><div class="review-role">Digital Agency — Israel</div><div class="review-source">Verified Trustpilot review</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"We use Shopify and the automation with blog content straight to approve or edit is great. The articles produced are great — definitely worth the monthly cost without doubt."</p><div class="review-author"><div class="review-avatar">AB</div><div><div class="review-name">Artisan Butcher</div><div class="review-role">Shopify Store — UK</div><div class="review-source">Verified Trustpilot review</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Promising signs of improvement in our rankings. Chat feature provides great help promptly. Content of articles is solid needing only minor edits most of the time."</p><div class="review-author"><div class="review-avatar">PG</div><div><div class="review-name">Peter Greenham</div><div class="review-role">Business Owner — Australia</div><div class="review-source">Verified Trustpilot review</div></div></div></div>
     </div>
   </div>
 </section>
 
 <hr class="divider"/>
 
-<!-- PRICING -->
-<section id="pricing" style="background:var(--black)">
-  <div class="section-inner" style="text-align:center">
-    <div class="section-tag">Pricing</div>
-    <h2>Agency quality. Without the agency price.</h2>
-    <p class="section-sub" style="margin:0 auto 48px">Start with a 3-day trial. Cancel anytime. No lock-in contracts.</p>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name">Starter</div>
-        <div class="price-amount"><sup>$</sup>49</div>
-        <div class="price-period">per month · AUD</div>
-        <ul class="price-features">
-          <li>15 SEO articles per month</li>
-          <li>50 DA backlinks per month</li>
-          <li>Keyword research included</li>
-          <li>WordPress auto-publish</li>
-          <li>Email support</li>
-        </ul>
-        <button class="price-btn price-btn-outline">Get started</button>
-      </div>
-      <div class="price-card featured">
-        <div class="price-tag">Most popular</div>
-        <div class="price-name">Growth</div>
-        <div class="price-amount"><sup>$</sup>99</div>
-        <div class="price-period">per month · AUD</div>
-        <ul class="price-features">
-          <li>30 SEO articles per month</li>
-          <li>100 DA backlinks per month</li>
-          <li>Competitor keyword analysis</li>
-          <li>WordPress + Shopify publish</li>
-          <li>Content gap analyser</li>
-          <li>Priority support</li>
-          <li>Cancel with 1 click</li>
-        </ul>
-        <button class="price-btn price-btn-green">Start 3-day trial →</button>
-      </div>
-      <div class="price-card">
-        <div class="price-name">Agency</div>
-        <div class="price-amount"><sup>$</sup>197</div>
-        <div class="price-period">per month · AUD</div>
-        <ul class="price-features">
-          <li>Everything in Growth</li>
-          <li>Up to 5 client websites</li>
-          <li>White-label reporting</li>
-          <li>Dedicated account manager</li>
-          <li>Custom brand voice</li>
-          <li>VIP support</li>
-        </ul>
-        <button class="price-btn price-btn-outline">Get started</button>
-      </div>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-top:28px">All plans include a 7-day money-back guarantee &nbsp;·&nbsp; Prices in AUD incl. GST</p>
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<!-- PLATFORMS -->
 <section style="background:var(--black2);padding:52px 5%">
   <div class="section-inner" style="text-align:center">
     <p style="font-size:13px;color:var(--muted);margin-bottom:20px;letter-spacing:0.05em;text-transform:uppercase;font-weight:600">Works with your existing platform</p>
     <div class="platforms">
-      <div class="platform-pill">WordPress</div>
-      <div class="platform-pill">Shopify</div>
-      <div class="platform-pill">Webflow</div>
-      <div class="platform-pill">Wix</div>
-      <div class="platform-pill">Squarespace</div>
-      <div class="platform-pill">HubSpot</div>
-      <div class="platform-pill">BigCommerce</div>
-      <div class="platform-pill">Any CMS via RSS</div>
+      <div class="platform-pill">WordPress</div><div class="platform-pill">Shopify</div><div class="platform-pill">Webflow</div><div class="platform-pill">Wix</div><div class="platform-pill">Squarespace</div><div class="platform-pill">HubSpot</div><div class="platform-pill">BigCommerce</div><div class="platform-pill">Any CMS via RSS</div>
     </div>
   </div>
 </section>
 
 <hr class="divider"/>
 
-<!-- FAQ -->
 <section id="faq" style="background:var(--black)">
   <div class="section-inner" style="text-align:center">
     <div class="section-tag">FAQ</div>
     <h2>Frequently asked questions</h2>
     <p class="section-sub" style="margin:0 auto 48px">Everything you need to know before getting started.</p>
     <div class="faq-list" style="text-align:left">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is the content actually good, or just AI spam? <div class="faq-arrow">+</div></div>
-        <div class="faq-a">We are anti-robot fluff. Our motto: if you wouldn't share it on LinkedIn, it's not good enough. Every article is 1,500+ words, expert-level, with real sources and custom images. You can review every article before it publishes — nothing goes live without your approval.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Will AI content hurt my Google rankings? <div class="faq-arrow">+</div></div>
-        <div class="faq-a">Google doesn't penalise AI content — they penalise low-quality content. Our focus is helpful, well-researched, authoritative articles. Our results speak for themselves: clients average a 216% traffic increase within 90 days.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How does auto-publishing work? <div class="faq-arrow">+</div></div>
-        <div class="faq-a">We connect directly to your WordPress, Shopify, or Webflow site via API. Articles are drafted, reviewed by you in your dashboard, then published on your chosen schedule — daily, weekly, or whenever you approve them.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can I really cancel anytime? <div class="faq-arrow">+</div></div>
-        <div class="faq-a">Yes — one-click cancellation, no questions asked, no lock-in. We are so confident in our results that we don't need to trap you in a contract.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What industries does this work for? <div class="faq-arrow">+</div></div>
-        <div class="faq-a">We have worked in 50+ industries: health, legal, e-commerce, local services, B2B SaaS, real estate, finance, trades, hospitality, and more. Our AI adapts to your specific niche, audience, and brand voice.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How long until I see results? <div class="faq-arrow">+</div></div>
-        <div class="faq-a">Most clients see measurable ranking improvements within 6–10 weeks. Significant traffic growth typically shows at the 90-day mark. SEO is a compounding investment — the earlier you start, the better your advantage over competitors.</div>
-      </div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is the content actually good, or just AI spam? <div class="faq-arrow">+</div></div><div class="faq-a">We are anti-robot fluff. Every article is 1,500+ words, expert-level, with real sources. You can review every article before it publishes — nothing goes live without your approval.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will AI content hurt my Google rankings? <div class="faq-arrow">+</div></div><div class="faq-a">Google does not penalise AI content — they penalise low-quality content. Our clients average a 3x traffic increase within 90 days.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does auto-publishing work? <div class="faq-arrow">+</div></div><div class="faq-a">We connect directly to your WordPress, Shopify, or Webflow site via API. Articles are drafted, reviewed by you in your dashboard, then published on your chosen schedule.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I really cancel anytime? <div class="faq-arrow">+</div></div><div class="faq-a">Yes — one-click cancellation, no questions asked, no lock-in. We are so confident in our results that we do not need to trap you in a contract.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What industries does this work for? <div class="faq-arrow">+</div></div><div class="faq-a">We have worked in 50+ industries: health, legal, e-commerce, local services, B2B SaaS, real estate, finance, trades, hospitality, and more.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long until I see results? <div class="faq-arrow">+</div></div><div class="faq-a">Most clients see measurable ranking improvements within 6-10 weeks. Significant traffic growth typically shows at the 90-day mark.</div></div>
     </div>
   </div>
 </section>
 
 <hr class="divider"/>
 
-<!-- CTA BAND -->
 <div class="cta-band">
   <h2>Start growing today.</h2>
-  <p>Join 1,400+ Australian businesses ranking higher on Google and AI search — on complete autopilot.</p>
+  <p>Join 1,400+ businesses ranking higher on Google and AI search — on complete autopilot.</p>
   <div class="cta-band-form">
     <input type="text" placeholder="https://yourwebsite.com.au" id="cta-input"/>
     <button onclick="handleCtaSubmit()">Get started →</button>
   </div>
-  <p class="cta-note">3-day trial &nbsp;·&nbsp; No credit card required &nbsp;·&nbsp; Cancel anytime</p>
+  <p class="cta-note">3-day trial for $0.99 &nbsp;·&nbsp; Then $197/month &nbsp;·&nbsp; Cancel anytime</p>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div>
-        <div class="footer-brand">Automate<span>SEO</span></div>
-        <p class="footer-tagline">Australia's automated SEO platform. Expert articles, quality backlinks, and AI search visibility — on complete autopilot.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Product</h4>
-        <a href="#how">How it works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="footer-col">
-        <h4>Platform</h4>
-        <a href="#">WordPress</a>
-        <a href="#">Shopify</a>
-        <a href="#">Webflow</a>
-        <a href="#">Wix</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#">About</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
-        <a href="#">Privacy policy</a>
-      </div>
+      <div><div class="footer-brand">Automate<span>SEO</span></div><p class="footer-tagline">Australia's automated SEO platform. Expert articles, quality backlinks, and AI search visibility — on complete autopilot.</p></div>
+      <div class="footer-col"><h4>Product</h4><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></div>
+      <div class="footer-col"><h4>Platform</h4><a href="#">WordPress</a><a href="#">Shopify</a><a href="#">Webflow</a><a href="#">Wix</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Blog</a><a href="#">Contact</a><a href="#">Privacy policy</a></div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-legal">© 2026 AutomateSEO Pty Ltd &nbsp;·&nbsp; ABN [insert] &nbsp;·&nbsp; Melbourne, Australia</div>
+      <div class="footer-legal">© 2026 AutomateSEO Pty Ltd &nbsp;·&nbsp; Melbourne, Australia</div>
       <div class="footer-legal">hello@automateseo.com.au</div>
     </div>
   </div>
 </footer>
 
 <script>
-function handleHeroSubmit(){
-  const url=document.getElementById('hero-input').value.trim();
-  if(!url){document.getElementById('hero-input').focus();return;}
-  alert('Thanks! We\'ll analyse '+url+' and send your free content plan. (Connect this to your signup flow.)');
+const BACKEND_URL = 'https://automateseo-backend-production.up.railway.app';
+async function startCheckout() {
+  const urlInput = document.getElementById('hero-input');
+  const url = urlInput ? urlInput.value.trim() : '';
+  const email = prompt('Enter your email address:');
+  if (!email) return;
+  const websiteUrl = url || prompt('Enter your website URL:');
+  if (!websiteUrl) return;
+  try {
+    const resp = await fetch(BACKEND_URL + '/api/create-checkout', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email, websiteUrl})
+    });
+    const data = await resp.json();
+    if (data.url) { window.location.href = data.url; }
+    else { alert('Something went wrong. Please contact hello@automateseo.com.au'); }
+  } catch(err) { alert('Something went wrong. Please contact hello@automateseo.com.au'); }
 }
-function handleCtaSubmit(){
-  const url=document.getElementById('cta-input').value.trim();
-  if(!url){document.getElementById('cta-input').focus();return;}
-  alert('Thanks! We\'ll analyse '+url+' and send your free content plan. (Connect this to your signup flow.)');
-}
-function toggleFaq(el){
-  const item=el.closest('.faq-item');
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!isOpen) item.classList.add('open');
-}
+function handleHeroSubmit() { const url = document.getElementById('hero-input').value.trim(); if (!url) { document.getElementById('hero-input').focus(); return; } startCheckout(); }
+function handleCtaSubmit() { const url = document.getElementById('cta-input').value.trim(); if (!url) { document.getElementById('cta-input').focus(); return; } startCheckout(); }
+function toggleFaq(el) { const item = el.closest('.faq-item'); const isOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open')); if (!isOpen) item.classList.add('open'); }
 </script>
 </body>
 </html>
