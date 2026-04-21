@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin - AutomateSEO</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#00E06A;--green-dim:#00B854;--black:#0A0A0A;--black2:#111;--card:#161616;--border:#242424;--text:#F0F0F0;--muted:#888;--muted2:#555;--white:#fff;--red:#ff5555;--yellow:#ffaa00;--radius:10px;--radius-lg:16px}
+body{background:var(--black);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.98);position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--white)}
+.nav-logo span{color:var(--green)}
+.nav-badge{font-size:10px;font-weight:700;background:rgba(255,85,85,0.15);color:var(--red);border:1px solid rgba(255,85,85,0.3);border-radius:100px;padding:3px 8px;margin-left:8px;vertical-align:middle}
+.nav-links{display:flex;gap:8px}
+.nav-link{font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:transparent;font-family:'Inter',sans-serif}
+.nav-link:hover{border-color:var(--muted);color:var(--white)}
+.nav-link.active{border-color:var(--green);color:var(--green);background:rgba(0,224,106,0.05)}
+.main{max-width:1200px;margin:0 auto;padding:32px 5%}
+.login-screen{max-width:380px;margin:80px auto;text-align:center}
+.login-screen h2{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--white);margin-bottom:8px}
+.login-screen p{font-size:14px;color:var(--muted);margin-bottom:24px}
+.login-input{width:100%;background:var(--black2);border:1.5px solid var(--border);border-radius:var(--radius);padding:12px 16px;font-size:14px;color:var(--white);font-family:'Inter',sans-serif;outline:none;margin-bottom:10px}
+.login-input:focus{border-color:var(--green)}
+.btn{padding:11px 20px;border-radius:var(--radius);font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;border:none}
+.btn-green{background:var(--green);color:var(--black);width:100%;padding:13px}
+.btn-green:hover{background:var(--green-dim)}
+.btn-sm{padding:6px 14px;font-size:12px;border:1px solid var(--border);background:transparent;color:var(--muted)}
+.btn-sm:hover{border-color:var(--muted);color:var(--white)}
+.btn-sm.danger{border-color:rgba(255,85,85,0.4);color:var(--red)}
+.btn-sm.danger:hover{background:rgba(255,85,85,0.1)}
+.btn-sm.primary{border-color:rgba(0,224,106,0.4);color:var(--green)}
+.btn-sm.primary:hover{background:rgba(0,224,106,0.05)}
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px}
+.stat-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+.stat-value{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--white)}
+.stat-value.green{color:var(--green)}
+.stat-value.red{color:var(--red)}
+.stat-value.yellow{color:var(--yellow)}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.section-title{font-size:13px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.08em}
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:28px}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;padding:12px 16px;border-bottom:1px solid var(--border);text-align:left;background:rgba(255,255,255,0.02)}
+td{font-size:13px;color:var(--text);padding:13px 16px;border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,0.02)}
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:0.04em}
+.badge-active{background:rgba(0,224,106,0.1);color:var(--green);border:1px solid rgba(0,224,106,0.3)}
+.badge-pending{background:rgba(255,170,0,0.1);color:var(--yellow);border:1px solid rgba(255,170,0,0.3)}
+.badge-cancelled{background:rgba(255,85,85,0.1);color:var(--red);border:1px solid rgba(255,85,85,0.3)}
+.badge-published{background:rgba(0,224,106,0.08);color:var(--green);border:1px solid rgba(0,224,106,0.2)}
+.badge-generated{background:rgba(136,136,136,0.1);color:var(--muted);border:1px solid var(--border)}
+.badge-none{background:rgba(136,136,136,0.08);color:var(--muted2);border:1px solid var(--border)}
+.badge-wordpress{background:rgba(33,117,155,0.15);color:#21759b;border:1px solid rgba(33,117,155,0.3)}
+.badge-shopify{background:rgba(150,191,72,0.15);color:#96bf48;border:1px solid rgba(150,191,72,0.3)}
+.action-row{display:flex;gap:6px;flex-wrap:wrap}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:20px}
+.panel-title{font-size:13px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.client-detail{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.detail-row{display:flex;flex-direction:column;gap:3px;padding:10px 0;border-bottom:1px solid var(--border)}
+.detail-row:last-child{border-bottom:none}
+.detail-label{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+.detail-value{font-size:13px;color:var(--white);word-break:break-all}
+.article-list{max-height:400px;overflow-y:auto}
+.article-row{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.article-row:last-child{border-bottom:none}
+.article-title-text{font-size:13px;color:var(--white);font-weight:500;margin-bottom:4px;line-height:1.4}
+.article-meta-text{font-size:11px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+.trigger-log{font-size:12px;color:var(--muted);font-family:monospace;background:var(--black2);border-radius:8px;padding:14px;max-height:200px;overflow-y:auto;margin-top:12px;white-space:pre-wrap;line-height:1.6}
+.search-input{background:var(--black2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);font-family:'Inter',sans-serif;outline:none;width:240px}
+.search-input:focus{border-color:var(--green)}
+.empty{text-align:center;padding:40px;color:var(--muted);font-size:14px}
+.loading{text-align:center;padding:40px;color:var(--muted)}
+.tabs{display:flex;gap:2px;background:var(--black2);border:1px solid var(--border);border-radius:10px;padding:3px;margin-bottom:24px;width:fit-content}
+.tab{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);transition:all 0.15s}
+.tab.active{background:var(--card);color:var(--white);border:1px solid var(--border)}
+@media(max-width:900px){.stats-row{grid-template-columns:repeat(3,1fr)}.client-detail{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="loginView" style="display:block">
+  <nav><div class="nav-logo">Automate<span>SEO</span> <span class="nav-badge">ADMIN</span></div></nav>
+  <div class="login-screen">
+    <div style="font-size:40px;margin-bottom:16px">&#128274;</div>
+    <h2>Admin Access</h2>
+    <p>Enter the admin password to access the control panel.</p>
+    <input type="password" class="login-input" id="adminPass" placeholder="Admin password" onkeypress="if(event.key==='Enter')adminLogin()"/>
+    <button class="btn btn-green" onclick="adminLogin()">Access Admin Panel</button>
+    <p id="loginErr" style="font-size:13px;color:var(--red);margin-top:12px;display:none">Incorrect password.</p>
+  </div>
+</div>
+
+<div id="adminView" style="display:none">
+  <nav>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="nav-logo">Automate<span>SEO</span> <span class="nav-badge">ADMIN</span></div>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link active" id="tab-clients" onclick="showTab('clients')">Clients</button>
+      <button class="nav-link" id="tab-articles" onclick="showTab('articles')">Articles</button>
+      <button class="nav-link" id="tab-tools" onclick="showTab('tools')">Tools</button>
+      <button class="nav-link" onclick="adminLogout()" style="color:var(--red);border-color:rgba(255,85,85,0.3)">Logout</button>
+    </div>
+  </nav>
+  <div class="main">
+
+    <!-- STATS -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat"><div class="stat-label">Total Clients</div><div class="stat-value" id="s-total">-</div></div>
+      <div class="stat"><div class="stat-label">Active</div><div class="stat-value green" id="s-active">-</div></div>
+      <div class="stat"><div class="stat-label">Pending</div><div class="stat-value yellow" id="s-pending">-</div></div>
+      <div class="stat"><div class="stat-label">Cancelled</div><div class="stat-value red" id="s-cancelled">-</div></div>
+      <div class="stat"><div class="stat-label">Total Articles</div><div class="stat-value" id="s-articles">-</div></div>
+    </div>
+
+    <!-- CLIENTS TAB -->
+    <div id="tab-content-clients">
+      <div class="section-header">
+        <div class="section-title">All Clients</div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <input type="text" class="search-input" id="clientSearch" placeholder="Search by email or domain..." oninput="filterClients()"/>
+          <button class="btn btn-sm primary" onclick="loadData()">Refresh</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Email</th><th>Website</th><th>Status</th><th>CMS</th><th>Articles</th><th>Joined</th><th>Actions</th></tr></thead>
+          <tbody id="clientsBody"><tr><td colspan="7" class="loading">Loading...</td></tr></tbody>
+        </table>
+      </div>
+      <!-- CLIENT DETAIL PANEL -->
+      <div id="clientDetail" style="display:none">
+        <div class="section-header" style="margin-bottom:16px">
+          <div class="section-title" id="detailTitle">Client Detail</div>
+          <button class="btn btn-sm" onclick="document.getElementById('clientDetail').style.display='none'">Close</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div class="panel"><div class="panel-title">Account Info</div><div id="detailInfo"></div></div>
+          <div class="panel"><div class="panel-title">Articles</div><div class="article-list" id="detailArticles"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTICLES TAB -->
+    <div id="tab-content-articles" style="display:none">
+      <div class="section-header">
+        <div class="section-title">Recent Articles</div>
+        <input type="text" class="search-input" id="articleSearch" placeholder="Search by title or keyword..." oninput="filterArticles()"/>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Title</th><th>Keyword</th><th>Client</th><th>Status</th><th>Words</th><th>Published</th><th>URL</th></tr></thead>
+          <tbody id="articlesBody"><tr><td colspan="7" class="loading">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TOOLS TAB -->
+    <div id="tab-content-tools" style="display:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div class="panel">
+          <div class="panel-title">Trigger Article Generation</div>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Manually trigger article generation for all active clients (runs the same job as the 9am AEST cron).</p>
+          <button class="btn btn-sm primary" onclick="triggerAll()" style="margin-bottom:12px">Run for All Active Clients</button>
+          <div id="triggerLog" class="trigger-log" style="display:none"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Trigger for Specific Client</div>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Enter a client email to generate one article for them immediately.</p>
+          <input type="email" class="search-input" id="triggerEmail" placeholder="client@example.com" style="width:100%;margin-bottom:10px"/>
+          <button class="btn btn-sm primary" onclick="triggerOne()">Generate Article Now</button>
+          <div id="triggerOneLog" class="trigger-log" style="display:none"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Add Client Manually</div>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Add a client directly without Stripe (for manual invoicing or testing).</p>
+          <input type="email" class="search-input" id="addEmail" placeholder="Email" style="width:100%;margin-bottom:8px"/>
+          <input type="url" class="search-input" id="addUrl" placeholder="https://website.com" style="width:100%;margin-bottom:8px"/>
+          <button class="btn btn-sm primary" onclick="addClient()">Add Client</button>
+          <div id="addLog" style="font-size:12px;color:var(--green);margin-top:8px;display:none"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">System Status</div>
+          <div id="statusPanel" style="font-size:13px;color:var(--muted)">Checking...</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var BACKEND = 'https://automateseo-backend-production.up.railway.app';
+var SUPABASE_URL = 'https://bccbndxjlzmcwhqayuvv.supabase.co';
+var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjY2JuZHhqbHptY3docWF5dXZ2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjY1NzQ4NSwiZXhwIjoyMDkyMjMzNDg1fQ.zh9WPyvqWIYMpRhMolp1Fep79o4OvY2ac11wZSADbE8';
+var ADMIN_KEY = 'automateseo-admin-2026';
+var allClients = [];
+var allArticles = [];
+
+function adminLogin() {
+  var pass = document.getElementById('adminPass').value;
+  if (pass === ADMIN_KEY) {
+    document.getElementById('loginView').style.display = 'none';
+    document.getElementById('adminView').style.display = 'block';
+    loadData();
+    checkStatus();
+  } else {
+    document.getElementById('loginErr').style.display = 'block';
+  }
+}
+function adminLogout() {
+  document.getElementById('adminView').style.display = 'none';
+  document.getElementById('loginView').style.display = 'block';
+}
+function showTab(tab) {
+  ['clients','articles','tools'].forEach(function(t) {
+    document.getElementById('tab-content-'+t).style.display = t===tab ? 'block' : 'none';
+    document.getElementById('tab-'+t).className = 'nav-link' + (t===tab?' active':'');
+  });
+}
+
+async function loadData() {
+  var h = { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY };
+  var [cr, ar] = await Promise.all([
+    fetch(SUPABASE_URL + '/rest/v1/clients?select=*&order=created_at.desc', { headers: h }),
+    fetch(SUPABASE_URL + '/rest/v1/articles?select=id,client_id,title,keyword,status,word_count,published_at,published_url,created_at&order=created_at.desc&limit=200', { headers: h })
+  ]);
+  allClients = await cr.json();
+  allArticles = await ar.json();
+
+  // Stats
+  var active = allClients.filter(function(c){ return c.status==='active'; }).length;
+  var pending = allClients.filter(function(c){ return c.status==='pending'; }).length;
+  var cancelled = allClients.filter(function(c){ return c.status==='cancelled'; }).length;
+  document.getElementById('s-total').textContent = allClients.length;
+  document.getElementById('s-active').textContent = active;
+  document.getElementById('s-pending').textContent = pending;
+  document.getElementById('s-cancelled').textContent = cancelled;
+  document.getElementById('s-articles').textContent = allArticles.length;
+
+  renderClients(allClients);
+  renderArticles(allArticles);
+}
+
+function renderClients(clients) {
+  var articleCountByClient = {};
+  allArticles.forEach(function(a){ articleCountByClient[a.client_id] = (articleCountByClient[a.client_id]||0)+1; });
+  document.getElementById('clientsBody').innerHTML = clients.length === 0
+    ? '<tr><td colspan="7" class="empty">No clients yet.</td></tr>'
+    : clients.map(function(c) {
+        var statusClass = c.status==='active'?'badge-active':c.status==='pending'?'badge-pending':'badge-cancelled';
+        var cmsClass = c.cms_type==='wordpress'?'badge-wordpress':c.cms_type==='shopify'?'badge-shopify':'badge-none';
+        var joined = new Date(c.created_at).toLocaleDateString('en-AU', {day:'numeric',month:'short',year:'2-digit'});
+        var count = articleCountByClient[c.id] || 0;
+        return '<tr>'
+          + '<td><a href="mailto:'+c.email+'" style="color:var(--green)">'+c.email+'</a></td>'
+          + '<td><a href="'+c.website_url+'" target="_blank" style="color:var(--muted);font-size:12px">'+c.website_url+'</a></td>'
+          + '<td><span class="badge '+statusClass+'">'+c.status+'</span></td>'
+          + '<td><span class="badge '+cmsClass+'">'+(c.cms_type||'none')+'</span></td>'
+          + '<td style="color:var(--green);font-weight:600">'+count+'</td>'
+          + '<td style="color:var(--muted);font-size:12px">'+joined+'</td>'
+          + '<td><div class="action-row">'
+          + '<button class="btn btn-sm primary" onclick="viewClient(''+c.id+'')">View</button>'
+          + '<button class="btn btn-sm primary" onclick="generateOne(''+c.id+'',''+c.email+'')">Gen</button>'
+          + (c.status!=='active' ? '<button class="btn btn-sm primary" onclick="activateClient(''+c.email+'')">Activate</button>' : '')
+          + '</div></td>'
+          + '</tr>';
+      }).join('');
+}
+
+function renderArticles(articles) {
+  var clientById = {};
+  allClients.forEach(function(c){ clientById[c.id] = c.email; });
+  document.getElementById('articlesBody').innerHTML = articles.length === 0
+    ? '<tr><td colspan="7" class="empty">No articles yet.</td></tr>'
+    : articles.map(function(a) {
+        var statusClass = a.status==='published'?'badge-published':'badge-generated';
+        var date = a.published_at ? new Date(a.published_at).toLocaleDateString('en-AU', {day:'numeric',month:'short'}) : new Date(a.created_at).toLocaleDateString('en-AU', {day:'numeric',month:'short'});
+        return '<tr>'
+          + '<td style="max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+a.title+'</td>'
+          + '<td><span style="font-size:11px;color:var(--green);background:rgba(0,224,106,0.08);border:1px solid rgba(0,224,106,0.2);border-radius:100px;padding:2px 8px">'+a.keyword+'</span></td>'
+          + '<td style="font-size:11px;color:var(--muted)">'+( clientById[a.client_id] || a.client_id.substring(0,8))+'</td>'
+          + '<td><span class="badge '+statusClass+'">'+a.status+'</span></td>'
+          + '<td style="color:var(--muted);font-size:12px">'+(a.word_count||'-')+'</td>'
+          + '<td style="color:var(--muted);font-size:12px">'+date+'</td>'
+          + '<td>'+(a.published_url ? '<a href="'+a.published_url+'" target="_blank" style="font-size:11px;color:var(--green)">View</a>' : '<span style="color:var(--muted2);font-size:11px">-</span>')+'</td>'
+          + '</tr>';
+      }).join('');
+}
+
+function filterClients() {
+  var q = document.getElementById('clientSearch').value.toLowerCase();
+  renderClients(q ? allClients.filter(function(c){ return c.email.toLowerCase().includes(q) || (c.website_url||'').toLowerCase().includes(q); }) : allClients);
+}
+function filterArticles() {
+  var q = document.getElementById('articleSearch').value.toLowerCase();
+  renderArticles(q ? allArticles.filter(function(a){ return a.title.toLowerCase().includes(q) || (a.keyword||'').toLowerCase().includes(q); }) : allArticles);
+}
+
+async function viewClient(clientId) {
+  var client = allClients.find(function(c){ return c.id===clientId; });
+  if (!client) return;
+  document.getElementById('detailTitle').textContent = client.email;
+  document.getElementById('clientDetail').style.display = 'block';
+  document.getElementById('clientDetail').scrollIntoView({behavior:'smooth'});
+  var clientArticles = allArticles.filter(function(a){ return a.client_id===clientId; });
+  var fields = [
+    ['Email', client.email], ['Website', client.website_url], ['Brand', client.brand_name||'-'],
+    ['Status', client.status], ['CMS', client.cms_type||'none'], ['Country', client.country||'-'],
+    ['Cities', client.target_cities||'-'], ['Language', client.language||'-'],
+    ['Priority Service', client.priority_service||'-'],
+    ['Joined', new Date(client.created_at).toLocaleDateString('en-AU')],
+    ['Stripe Customer', client.stripe_customer_id||'none'],
+    ['Subscription', client.stripe_subscription_id||'none']
+  ];
+  document.getElementById('detailInfo').innerHTML = fields.map(function(f){
+    return '<div class="detail-row"><span class="detail-label">'+f[0]+'</span><span class="detail-value">'+f[1]+'</span></div>';
+  }).join('');
+  document.getElementById('detailArticles').innerHTML = clientArticles.length === 0
+    ? '<div class="empty">No articles yet.</div>'
+    : clientArticles.map(function(a){
+        var statusClass = a.status==='published'?'badge-published':'badge-generated';
+        return '<div class="article-row"><div><div class="article-title-text">'+a.title+'</div><div class="article-meta-text"><span class="badge '+statusClass+'" style="font-size:10px">'+a.status+'</span><span>'+a.keyword+'</span>'+(a.word_count?'<span>'+a.word_count+' words</span>':'')+'</div></div>'+(a.published_url?'<a href="'+a.published_url+'" target="_blank" style="font-size:11px;color:var(--green);flex-shrink:0">View</a>':'')+'</div>';
+      }).join('');
+}
+
+async function generateOne(clientId, email) {
+  if (!confirm('Generate an article for ' + email + ' now?')) return;
+  var log = document.getElementById('triggerOneLog');
+  log.style.display = 'block';
+  log.textContent = 'Triggering article generation for ' + email + '...';
+  showTab('tools');
+  document.getElementById('triggerEmail').value = email;
+  triggerOne();
+}
+
+async function triggerAll() {
+  var log = document.getElementById('triggerLog');
+  log.style.display = 'block';
+  log.textContent = 'Triggering article generation for all active clients...
+';
+  try {
+    var resp = await fetch(BACKEND + '/api/trigger-articles', {
+      method: 'POST',
+      headers: { 'x-admin-key': 'automateseo-admin-2026', 'Content-Type': 'application/json' }
+    });
+    var d = await resp.json();
+    log.textContent += resp.ok ? 'Started! ' + JSON.stringify(d) : 'Error: ' + JSON.stringify(d);
+  } catch(e) { log.textContent += 'Error: ' + e.message; }
+}
+
+async function triggerOne() {
+  var email = document.getElementById('triggerEmail').value.trim();
+  var log = document.getElementById('triggerOneLog');
+  log.style.display = 'block';
+  if (!email) { log.textContent = 'Enter an email first.'; return; }
+  log.textContent = 'Looking up client ' + email + '...';
+  var client = allClients.find(function(c){ return c.email === email; });
+  if (!client) { log.textContent = 'Client not found.'; return; }
+  log.textContent = 'Triggering for ' + email + '...
+Client ID: ' + client.id + '
+CMS: ' + (client.cms_type||'none') + '
+Status: ' + client.status;
+  try {
+    var resp = await fetch(BACKEND + '/api/trigger-one', {
+      method: 'POST',
+      headers: { 'x-admin-key': 'automateseo-admin-2026', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ clientId: client.id })
+    });
+    var d = await resp.json();
+    log.textContent += '
+
+Result: ' + JSON.stringify(d, null, 2);
+    loadData();
+  } catch(e) { log.textContent += '
+Error: ' + e.message; }
+}
+
+async function activateClient(email) {
+  if (!confirm('Activate client ' + email + '?')) return;
+  var h = { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
+  await fetch(SUPABASE_URL + '/rest/v1/clients?email=eq.' + encodeURIComponent(email), { method: 'PATCH', headers: h, body: JSON.stringify({ status: 'active' }) });
+  await loadData();
+}
+
+async function addClient() {
+  var email = document.getElementById('addEmail').value.trim();
+  var url = document.getElementById('addUrl').value.trim();
+  var log = document.getElementById('addLog');
+  if (!email || !url) { log.style.display='block'; log.style.color='var(--red)'; log.textContent='Fill in both fields.'; return; }
+  var h = { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
+  var resp = await fetch(SUPABASE_URL + '/rest/v1/clients', { method: 'POST', headers: h, body: JSON.stringify({ email, website_url: url, status: 'active', cms_type: 'none' }) });
+  log.style.display = 'block';
+  log.style.color = resp.ok ? 'var(--green)' : 'var(--red)';
+  log.textContent = resp.ok ? 'Client added and activated!' : 'Error: ' + resp.status;
+  if (resp.ok) { document.getElementById('addEmail').value=''; document.getElementById('addUrl').value=''; loadData(); }
+}
+
+async function checkStatus() {
+  var panel = document.getElementById('statusPanel');
+  try {
+    var resp = await fetch(BACKEND + '/');
+    var d = await resp.json();
+    panel.innerHTML = '<div style="display:flex;flex-direction:column;gap:8px">'
+      + '<div><span style="color:var(--green);font-weight:600">&#9679; Backend</span> Online</div>'
+      + '<div style="font-size:12px;color:var(--muted2)">'+d.time+'</div>'
+      + '<div style="margin-top:8px;font-size:12px;color:var(--muted)">Daily cron: 9am AEST (11pm UTC)</div>'
+      + '</div>';
+  } catch(e) {
+    panel.innerHTML = '<span style="color:var(--red)">&#9679; Backend Offline</span>';
+  }
+}
+</script>
+</body>
+</html>
