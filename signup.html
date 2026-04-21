@@ -206,6 +206,20 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
   </div>
 </div>
 <div class="step-page" id="step4">
+  <div class="main" style="max-width:520px">
+    <div style="text-align:center;margin-bottom:32px">
+      <div style="font-size:44px;margin-bottom:14px"></div>
+      <div class="page-title" style="text-align:center">Almost Done!</div>
+      <div class="page-sub" style="text-align:center;margin-bottom:0">Enter your email to start your 3-day free trial, then $197/month. Cancel anytime.</div>
+    </div>
+    <div class="card"><div class="card-title">Email Address</div><input type="email" id="userEmail" placeholder="your@email.com" style="margin-bottom:0"/></div>
+    <div class="checkbox-row"><input type="checkbox" id="agreeTerms"/><label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label></div>
+    <button class="btn-full" onclick="saveEmailAndContinue()">Next Step</button>
+    <div class="secure-note"><span style="font-size:20px"></span><div><div style="font-weight:600;color:var(--text);margin-bottom:2px">Secure Login</div><div>We'll send you a secure login link via email. No passwords needed!</div></div></div>
+    <div class="btn-row" style="border:none;padding-top:14px;margin-top:14px"><button class="btn-back" onclick="goTo('step3')">Back</button><span style="font-size:12px;color:var(--muted)">Step 4 of 5</span></div>
+  </div>
+</div>
+<div class="step-page" id="step5">
   <div class="main" style="max-width:560px">
     <div class="page-title">Connect Your Website</div>
     <div class="page-sub">We will auto-publish your daily articles directly to your site. Choose your platform below.</div>
@@ -270,26 +284,12 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
       </div>
     </div>
     <div class="btn-row">
-      <button class="btn-back" onclick="goTo('step3')">Back</button>
+      <button class="btn-back" onclick="goTo('step4')">Back</button>
       <div style="display:flex;align-items:center;gap:14px">
-        <span style="font-size:12px;color:var(--muted)">Step 4 of 5</span>
+        <span style="font-size:12px;color:var(--muted)">Step 5 of 5</span>
         <button class="btn-next" onclick="finishSignup()">Next Step</button>
       </div>
     </div>
-  </div>
-</div>
-<div class="step-page" id="step5">
-  <div class="main" style="max-width:520px">
-    <div style="text-align:center;margin-bottom:32px">
-      <div style="font-size:44px;margin-bottom:14px"></div>
-      <div class="page-title" style="text-align:center">Almost Done!</div>
-      <div class="page-sub" style="text-align:center;margin-bottom:0">Enter your email to start your 3-day free trial, then $197/month. Cancel anytime.</div>
-    </div>
-    <div class="card"><div class="card-title">Email Address</div><input type="email" id="userEmail" placeholder="your@email.com" style="margin-bottom:0"/></div>
-    <div class="checkbox-row"><input type="checkbox" id="agreeTerms"/><label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label></div>
-    <button class="btn-full" onclick="saveEmailAndContinue()">Next Step</button>
-    <div class="secure-note"><span style="font-size:20px"></span><div><div style="font-weight:600;color:var(--text);margin-bottom:2px">Secure Login</div><div>We'll send you a secure login link via email. No passwords needed!</div></div></div>
-    <div class="btn-row" style="border:none;padding-top:14px;margin-top:14px"><button class="btn-back" onclick="goTo('step4')">Back</button><span style="font-size:12px;color:var(--muted)">Step 5 of 5</span></div>
   </div>
 </div>
 <script>
