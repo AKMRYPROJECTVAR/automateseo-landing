@@ -113,7 +113,7 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
 <body>
 <nav>
   <div class="nav-logo">Automate<span>SEO</span></div>
-  <div class="nav-links"><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+  <div class="nav-links"><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="/dashboard.html" style="color:var(--green)">Dashboard</a></div>
   <button class="nav-cta" onclick="handleSignup()">Get started free</button>
 </nav>
 
@@ -124,13 +124,13 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     <h1>Rank Higher on<br/><span>Google and AI Search.</span><br/>On Autopilot.</h1>
     <p class="hero-sub">We publish one expert SEO article to your website every day, build high-authority backlinks, and get your business recommended by ChatGPT, Perplexity, and Google - while you focus on running your business.</p>
     <div class="url-form">
-      <input type="text" id="hero-input" placeholder="https://yourwebsite.com.au"/>
+      <input type="url" id="hero-input" placeholder="https://yourwebsite.com.au"/>
       <button onclick="handleHeroSubmit()">Get started free</button>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:60px">No credit card required &nbsp; | &nbsp; Cancel anytime &nbsp; | &nbsp; Same-day article delivery</p>
     <div class="stats">
       <div class="stat-item"><div class="stat-num">3x</div><div class="stat-label">Average traffic increase in 90 days</div></div>
-      <div class="stat-item"><div class="stat-num">1,400+</div><div class="stat-label">Businesses growing with us</div></div>
+      <div class="stat-item"><div class="stat-num">30</div><div class="stat-label">Expert articles per month</div></div>
       <div class="stat-item"><div class="stat-num">30</div><div class="stat-label">Expert articles every month</div></div>
       <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Cheaper than a traditional agency</div></div>
     </div>
@@ -154,10 +154,10 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
         <ul class="price-features">
           <li>30 SEO articles per month</li>
           <li>1,500+ words per article</li>
-          <li>High-authority backlinks monthly</li>
+          <li>Keyword research and topic planning</li>
           <li>Competitor keyword analysis</li>
           <li>WordPress + Shopify auto-publish</li>
-          <li>Content gap analyser</li>
+          <li>Competitor content analysis</li>
           <li>Priority support</li>
           <li>Cancel with 1 click</li>
         </ul>
@@ -221,7 +221,7 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
   <div class="section-inner">
     <div class="section-tag">Customer reviews</div>
     <h2>Real businesses. Real results.</h2>
-    <p class="section-sub">Trusted by over 1,400 businesses across Australia and beyond.</p>
+    <p class="section-sub">See what businesses are saying about AutomateSEO.</p>
     <div class="reviews-grid">
       <div class="review-card"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"The quality of the published articles is truly remarkable. I have gained my first customer who called me because of a published article. I can only recommend this service."</p><div class="review-author"><div class="review-avatar">MB</div><div><div class="review-name">Martin Bonauer</div><div class="review-role">Real Estate - Switzerland</div></div></div></div>
       <div class="review-card"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="review-text">"The signup process was seamless. The articles being produced are better than any other service I have looked at. This platform is a 10/10 - AutomateSEO is the future of SEO."</p><div class="review-author"><div class="review-avatar">RG</div><div><div class="review-name">Randy Goldberg</div><div class="review-role">Business Owner - USA</div></div></div></div>
@@ -252,9 +252,9 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     <h2>Frequently asked questions</h2>
     <p class="section-sub" style="margin:0 auto 48px">Everything you need to know before getting started.</p>
     <div class="faq-list" style="text-align:left">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is the content actually good, or just AI spam? <div class="faq-arrow">+</div></div><div class="faq-a">We are anti-robot fluff. Every article is 1,500+ words, expert-level, with real sources. You can review every article before it publishes.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is the content actually good, or just AI spam? <div class="faq-arrow">+</div></div><div class="faq-a">We are anti-robot fluff. Every article is 1,500+ words, expert-level, tailored to your specific business and customers. Not generic AI content.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will AI content hurt my Google rankings? <div class="faq-arrow">+</div></div><div class="faq-a">Google does not penalise AI content - they penalise low-quality content. Our clients average a 3x traffic increase within 90 days.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does auto-publishing work? <div class="faq-arrow">+</div></div><div class="faq-a">We connect directly to your WordPress, Shopify, or Webflow site via API. Articles are drafted, reviewed by you, then published on your chosen schedule.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does auto-publishing work? <div class="faq-arrow">+</div></div><div class="faq-a">We connect directly to your WordPress or Shopify site via API. Articles are generated and auto-published daily - no approval needed. You can edit or delete any article directly on your site.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I really cancel anytime? <div class="faq-arrow">+</div></div><div class="faq-a">Yes - one-click cancellation, no questions asked, no lock-in. We are confident enough in our results that we do not need to trap you in a contract.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What industries does this work for? <div class="faq-arrow">+</div></div><div class="faq-a">We have worked in 50+ industries: health, legal, e-commerce, local services, B2B SaaS, real estate, finance, trades, hospitality, and more.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long until I see results? <div class="faq-arrow">+</div></div><div class="faq-a">Most clients see measurable ranking improvements within 6-10 weeks. Significant traffic growth typically shows at the 90-day mark.</div></div>
@@ -266,9 +266,9 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
 
 <div class="cta-band">
   <h2>Start growing today.</h2>
-  <p>Join 1,400+ businesses ranking higher on Google and AI search - on complete autopilot.</p>
+  <p>Start ranking higher on Google and AI search - on complete autopilot.</p>
   <div class="cta-band-form">
-    <input type="text" placeholder="https://yourwebsite.com.au" id="cta-input"/>
+    <input type="url" placeholder="https://yourwebsite.com.au" id="cta-input"/>
     <button onclick="handleCtaSubmit()">Get started free</button>
   </div>
   <p class="cta-note">Free to start &nbsp; | &nbsp; $197/month after &nbsp; | &nbsp; Cancel anytime</p>
@@ -279,8 +279,8 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     <div class="footer-top">
       <div><div class="footer-brand">Automate<span>SEO</span></div><p class="footer-tagline">Australia's automated SEO platform. Expert articles, quality backlinks, and AI search visibility - on complete autopilot.</p></div>
       <div class="footer-col"><h4>Product</h4><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></div>
-      <div class="footer-col"><h4>Platform</h4><a href="#">WordPress</a><a href="#">Shopify</a><a href="#">Webflow</a><a href="#">Wix</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Blog</a><a href="#">Contact</a><a href="#">Privacy policy</a></div>
+      <div class="footer-col"><h4>Platform</h4><a href="/signup.html">WordPress</a><a href="/signup.html">Shopify</a><a href="/signup.html">Webflow</a><a href="/signup.html">Wix</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/dashboard.html">Dashboard</a><a href="mailto:hello@automateseo.com.au">Contact</a><a href="/privacy.html">Privacy policy</a><a href="/terms.html">Terms of service</a></div>
     </div>
     <div class="footer-bottom">
       <div class="footer-legal">&#169; 2026 AutomateSEO Pty Ltd &nbsp; | &nbsp; Melbourne, Australia</div>
