@@ -39,7 +39,7 @@ h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;
 .price-btn{width:100%;padding:16px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;border:none;background:var(--green);color:var(--black)}
 .price-btn:hover{background:var(--green-dim)}
 .price-guarantee{font-size:12px;color:var(--muted);margin-top:18px}
-.hero{max-width:860px;margin:0 auto;padding:100px 5% 80px;text-align:center}
+.hero{max-width:860px;margin:0 auto;padding:80px 5%;text-align:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,224,106,0.1);border:1px solid rgba(0,224,106,0.25);border-radius:100px;padding:6px 16px;font-size:13px;color:var(--green);font-weight:600;margin-bottom:28px}
 .hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
 h1{font-family:'Syne',sans-serif;font-size:clamp(38px,6vw,70px);font-weight:800;line-height:1.08;letter-spacing:-2px;color:var(--white);margin-bottom:22px}
@@ -114,37 +114,10 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
 <nav>
   <div class="nav-logo">Automate<span>SEO</span></div>
   <div class="nav-links"><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
-  <button class="nav-cta" onclick="handleSignup()">Start free trial</button>
+  <button class="nav-cta" onclick="handleSignup()">Get started free</button>
 </nav>
-<section id="pricing" style="background:var(--black);padding:60px 5% 80px">
-  <div class="section-inner" style="text-align:center">
-    <div class="section-tag">Simple pricing</div>
-    <h2>Start for $0.99. Cancel anytime.</h2>
-    <p class="section-sub" style="margin:0 auto 48px">Try AutomateSEO for 3 days, then just $197/month. No lock-in. No agency markup. Cancel with one click.</p>
-    <div class="pricing-wrap">
-      <div class="price-card">
-        <div class="price-tag">3-Day Trial - Just $0.99</div>
-        <div class="price-name">Growth Plan</div>
-        <div class="price-amount"><sup>$</sup>197</div>
-        <div class="price-period">per month / AUD / after trial</div>
-        <ul class="price-features">
-          <li>30 SEO articles per month</li>
-          <li>1,500+ words per article</li>
-          <li>High-authority backlinks monthly</li>
-          <li>Competitor keyword analysis</li>
-          <li>WordPress + Shopify auto-publish</li>
-          <li>Content gap analyser</li>
-          <li>Priority support</li>
-          <li>Cancel with 1 click</li>
-        </ul>
-        <button class="price-btn" onclick="handleSignup()">Start 3-Day Trial for $0.99</button>
-        <div class="price-guarantee">7-day money-back guarantee &nbsp; | &nbsp; Prices in AUD &nbsp; | &nbsp; No lock-in contracts</div>
-      </div>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-top:28px">Cancel anytime with one click. No questions asked.</p>
-  </div>
-</section>
-<hr class="divider"/>
+
+<!-- HERO FIRST -->
 <section style="padding:0;background:var(--black)">
   <div class="hero">
     <div class="hero-badge"><span class="hero-badge-dot"></span>Australia's #1 Automated SEO Platform</div>
@@ -152,7 +125,7 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     <p class="hero-sub">We publish one expert SEO article to your website every day, build high-authority backlinks, and get your business recommended by ChatGPT, Perplexity, and Google - while you focus on running your business.</p>
     <div class="url-form">
       <input type="text" id="hero-input" placeholder="https://yourwebsite.com.au"/>
-      <button onclick="handleHeroSubmit()">Get started</button>
+      <button onclick="handleHeroSubmit()">Get started free</button>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-bottom:60px">No credit card required &nbsp; | &nbsp; Cancel anytime &nbsp; | &nbsp; Same-day article delivery</p>
     <div class="stats">
@@ -163,8 +136,42 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     </div>
   </div>
 </section>
+
 <hr class="divider"/>
-<section style="background:var(--black2)">
+
+<!-- PRICING SECOND -->
+<section id="pricing" style="background:var(--black2);padding:80px 5%">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-tag">Simple pricing</div>
+    <h2>One plan. Everything included.</h2>
+    <p class="section-sub" style="margin:0 auto 48px">Start free. Then just $197/month. No lock-in. No agency markup. Cancel with one click.</p>
+    <div class="pricing-wrap">
+      <div class="price-card">
+        <div class="price-tag">Most Popular</div>
+        <div class="price-name">Growth Plan</div>
+        <div class="price-amount"><sup>$</sup>197</div>
+        <div class="price-period">per month / AUD</div>
+        <ul class="price-features">
+          <li>30 SEO articles per month</li>
+          <li>1,500+ words per article</li>
+          <li>High-authority backlinks monthly</li>
+          <li>Competitor keyword analysis</li>
+          <li>WordPress + Shopify auto-publish</li>
+          <li>Content gap analyser</li>
+          <li>Priority support</li>
+          <li>Cancel with 1 click</li>
+        </ul>
+        <button class="price-btn" onclick="handleSignup()">Get started free</button>
+        <div class="price-guarantee">Free to start &nbsp; | &nbsp; Prices in AUD &nbsp; | &nbsp; No lock-in contracts</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:24px">Cancel anytime with one click. No questions asked.</p>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<section style="background:var(--black)">
   <div class="section-inner" style="text-align:center">
     <div class="section-tag">The difference</div>
     <h2>While you read this, AI is recommending your competitors</h2>
@@ -191,8 +198,10 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     </div>
   </div>
 </section>
+
 <hr class="divider"/>
-<section id="how" style="background:var(--black)">
+
+<section id="how" style="background:var(--black2)">
   <div class="section-inner">
     <div class="section-tag">How it works</div>
     <h2>From zero to ranking in four steps</h2>
@@ -205,8 +214,10 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     </div>
   </div>
 </section>
+
 <hr class="divider"/>
-<section id="reviews" style="background:var(--black2)">
+
+<section id="reviews" style="background:var(--black)">
   <div class="section-inner">
     <div class="section-tag">Customer reviews</div>
     <h2>Real businesses. Real results.</h2>
@@ -221,7 +232,9 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     </div>
   </div>
 </section>
+
 <hr class="divider"/>
+
 <section style="background:var(--black2);padding:52px 5%">
   <div class="section-inner" style="text-align:center">
     <p style="font-size:13px;color:var(--muted);margin-bottom:20px;letter-spacing:0.05em;text-transform:uppercase;font-weight:600">Works with your existing platform</p>
@@ -230,7 +243,9 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     </div>
   </div>
 </section>
+
 <hr class="divider"/>
+
 <section id="faq" style="background:var(--black)">
   <div class="section-inner" style="text-align:center">
     <div class="section-tag">FAQ</div>
@@ -246,16 +261,19 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     </div>
   </div>
 </section>
+
 <hr class="divider"/>
+
 <div class="cta-band">
   <h2>Start growing today.</h2>
   <p>Join 1,400+ businesses ranking higher on Google and AI search - on complete autopilot.</p>
   <div class="cta-band-form">
     <input type="text" placeholder="https://yourwebsite.com.au" id="cta-input"/>
-    <button onclick="handleCtaSubmit()">Get started</button>
+    <button onclick="handleCtaSubmit()">Get started free</button>
   </div>
-  <p class="cta-note">3-day trial for $0.99 &nbsp; | &nbsp; Then $197/month &nbsp; | &nbsp; Cancel anytime</p>
+  <p class="cta-note">Free to start &nbsp; | &nbsp; $197/month after &nbsp; | &nbsp; Cancel anytime</p>
 </div>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -270,6 +288,7 @@ footer{background:var(--black2);border-top:1px solid var(--border);padding:52px 
     </div>
   </div>
 </footer>
+
 <script>
 function handleSignup(){window.location.href='/signup.html';}
 function handleHeroSubmit(){var u=document.getElementById('hero-input').value.trim();window.location.href='/signup.html'+(u?'?url='+encodeURIComponent(u):'');}
