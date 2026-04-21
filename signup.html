@@ -21,7 +21,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 5%;h
 .progress-inner{max-width:500px;margin:0 auto;display:flex;align-items:center;justify-content:center}
 .step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid var(--border);color:var(--muted);background:var(--black2);flex-shrink:0}
 .step-dot.active{border-color:var(--green);color:var(--green);background:rgba(0,224,106,0.1)}
-.step-dot.done{border-color:var(--green);background:var(--green);color:var(--black)}
+.step-dot.done{border-color:var(--green);background:var(--green);color:var(--black);font-size:16px;font-weight:900}
 .step-line{flex:1;height:2px;background:var(--border);max-width:80px}
 .step-line.done{background:var(--green)}
 .main{max-width:680px;margin:0 auto;padding:48px 20px 80px}
@@ -117,7 +117,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
     <div class="step-dot" id="dot1">1</div><div class="step-line" id="line12"></div>
     <div class="step-dot" id="dot2">2</div><div class="step-line" id="line23"></div>
     <div class="step-dot" id="dot3">3</div><div class="step-line" id="line35"></div>
-    <div class="step-dot" id="dot5">5</div>
+    <div class="step-dot" id="dot5">4</div>
   </div>
 </div>
 <div class="step-page active" id="step1">
@@ -172,7 +172,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
       <div class="card-title" style="color:#ff5555">What You Don't Sell</div>
       <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Related items or services you don't offer</div>
       <div id="exclusionList"></div>
-      <div class="add-row"><input type="text" id="newExc" placeholder="e.g. Paid Search Advertising" onkeypress="if(event.key==='Enter')addExc()"/><button class="btn-add" onclick="addExc()">+ Add Item</button></div>
+      <div class="add-row"><input type="text" id="newExc" placeholder="e.g. Web design services" onkeypress="if(event.key==='Enter')addExc()"/><button class="btn-add" onclick="addExc()">+ Add Item</button></div>
     </div>
     <div class="card">
       <div class="card-title">Which Product Should We Focus On First?</div>
