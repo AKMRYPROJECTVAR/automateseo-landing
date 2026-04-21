@@ -21,7 +21,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 5%;h
 .progress-inner{max-width:500px;margin:0 auto;display:flex;align-items:center;justify-content:center}
 .step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid var(--border);color:var(--muted);background:var(--black2);flex-shrink:0}
 .step-dot.active{border-color:var(--green);color:var(--green);background:rgba(0,224,106,0.1)}
-.step-dot.done{border-color:var(--green);background:var(--green);color:var(--black);font-size:14px;font-weight:900}
+.step-dot.done{border-color:var(--green);background:var(--green);color:var(--black);font-family:'Inter',sans-serif;font-size:13px;font-weight:700}.step-dot.done::before{content:'';display:none}
 .step-line{flex:1;height:2px;background:var(--border);max-width:80px}
 .step-line.done{background:var(--green)}
 .main{max-width:680px;margin:0 auto;padding:48px 20px 80px}
@@ -147,7 +147,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
     <div class="card">
       <div class="card-title">Brand and Language</div>
       <div class="form-row">
-        <div class="form-group" style="margin:0"><label>Brand Name</label><input type="text" id="brandName" placeholder="Your Business Name" oninput="state.brandName=this.value"/><div id="compatHint" style="font-size:12px;color:var(--green);margin-top:4px;display:none">v Compatible with AutomateSEO</div></div>
+        <div class="form-group" style="margin:0"><label>Brand Name</label><input type="text" id="brandName" placeholder="Your Business Name" oninput="state.brandName=this.value"/><div id="compatHint" style="font-size:12px;color:var(--green);margin-top:4px;display:none;font-family:Inter,sans-serif">&#10003; Compatible with AutomateSEO</div></div>
         <div class="form-group" style="margin:0"><label>Article Language</label><select id="language" onchange="state.language=this.value"><option value="en-AU">English (Australian)</option><option value="en-US">English (American)</option><option value="en-GB">English (British)</option></select></div>
       </div>
     </div>
@@ -222,7 +222,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
 var BACKEND='https://automateseo-backend-production.up.railway.app';
 var state={websiteUrl:'',brandName:'',language:'en-AU',country:'AU',reach:'local',targetCities:'',businessDesc:'',exclusions:[],services:[],priorityService:'',competitors:[],email:''};
 function goTo(id){document.querySelectorAll('.step-page').forEach(function(p){p.classList.remove('active');});document.getElementById(id).classList.add('active');updateProg(id);window.scrollTo(0,0);}
-function updateProg(id){var bar=document.getElementById('progressBar');if(id==='step1'||id==='step1b'){bar.style.display='none';return;}bar.style.display='block';var map={step2:2,step3:3,step5:5};var cur=map[id]||2;[['1',1],['2',2],['3',3],['5',5]].forEach(function(pair){var d=document.getElementById('dot'+pair[0]);d.className='step-dot';if(pair[1]<cur){d.classList.add('done');d.innerHTML='v';}else if(pair[1]===cur){d.classList.add('active');d.innerHTML=pair[0];}else{d.innerHTML=pair[0];}});[['12',1],['23',2],['35',3]].forEach(function(pair){document.getElementById('line'+pair[0]).className='step-line'+(pair[1]<cur?' done':'');});}
+function updateProg(id){var bar=document.getElementById('progressBar');if(id==='step1'||id==='step1b'){bar.style.display='none';return;}bar.style.display='block';var map={step2:2,step3:3,step5:5};var cur=map[id]||2;[['1',1],['2',2],['3',3],['5',5]].forEach(function(pair){var d=document.getElementById('dot'+pair[0]);d.className='step-dot';if(pair[1]<cur){d.classList.add('done');d.innerHTML='<span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px">&#10003;</span>';}else if(pair[1]===cur){d.classList.add('active');d.innerHTML=pair[0];}else{d.innerHTML=pair[0];}});[['12',1],['23',2],['35',3]].forEach(function(pair){document.getElementById('line'+pair[0]).className='step-line'+(pair[1]<cur?' done':'');});}
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
 async function startAnalysis(){var url=document.getElementById('websiteUrl').value.trim();if(!url){document.getElementById('websiteUrl').focus();return;}state.websiteUrl=url;goTo('step1b');var msgs=['Scanning your website...','Identifying your business type...','Researching industry keywords...','Analysing competitor landscape...','Generating your business profile...','Almost done...'];var bar=document.getElementById('loadingBar');var st=document.getElementById('loadingStatus');for(var i=0;i<msgs.length;i++){await sleep(600);bar.style.width=((i+1)/msgs.length*100)+'%';st.textContent=msgs[i];}await sleep(500);await genBusinessData(url);goTo('step2');}
 function titleCase(str){return str.split(' ').map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join(' ');}
