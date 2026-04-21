@@ -116,8 +116,9 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
   <div class="progress-inner">
     <div class="step-dot" id="dot1">1</div><div class="step-line" id="line12"></div>
     <div class="step-dot" id="dot2">2</div><div class="step-line" id="line23"></div>
-    <div class="step-dot" id="dot3">3</div><div class="step-line" id="line35"></div>
-    <div class="step-dot" id="dot5">4</div>
+    <div class="step-dot" id="dot3">3</div><div class="step-line" id="line34"></div>
+    <div class="step-dot" id="dot4">4</div><div class="step-line" id="line45"></div>
+    <div class="step-dot" id="dot5">5</div>
   </div>
 </div>
 <div class="step-page active" id="step1">
@@ -181,7 +182,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
     </div>
     <div class="btn-row">
       <button class="btn-back" onclick="goTo('step1')">Back</button>
-      <div style="display:flex;align-items:center;gap:14px"><span style="font-size:12px;color:var(--muted)">Step 2 of 3</span><button class="btn-next" onclick="goTo('step3')">Next Step -></button></div>
+      <div style="display:flex;align-items:center;gap:14px"><span style="font-size:12px;color:var(--muted)">Step 2 of 5</span><button class="btn-next" onclick="goTo('step3')">Next Step -></button></div>
     </div>
   </div>
 </div>
@@ -200,7 +201,80 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
     <div class="card"><div class="card-title">Add a Competitor</div><div class="add-row"><input type="text" id="newComp" placeholder="competitor.com (root domain only)" onkeypress="if(event.key==='Enter')addComp()"/><button class="btn-add" onclick="addComp()">Add Competitor</button></div><div class="field-hint" style="margin-top:8px">Root domains only (e.g., competitor.com)</div></div>
     <div class="btn-row">
       <button class="btn-back" onclick="goTo('step2')">Back</button>
-      <div style="display:flex;align-items:center;gap:14px"><span style="font-size:12px;color:var(--muted)">Step 3 of 3</span><button class="btn-next" onclick="goTo('step5')">Next Step -></button></div>
+      <div style="display:flex;align-items:center;gap:14px"><span style="font-size:12px;color:var(--muted)">Step 3 of 5</span><button class="btn-next" onclick="goTo('step4')">Next Step</button></div>
+    </div>
+  </div>
+</div>
+<div class="step-page" id="step4">
+  <div class="main" style="max-width:560px">
+    <div class="page-title">Connect Your Website</div>
+    <div class="page-sub">We will auto-publish your daily articles directly to your site. Choose your platform below.</div>
+    <div class="card" id="cms-none-card" style="border:2px solid var(--green);cursor:pointer" onclick="selectCMS('none')">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,224,106,0.15);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:16px">&#128196;</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--white)">I will connect later</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Articles will be saved to your dashboard</div>
+        </div>
+        <div id="cms-none-check" style="margin-left:auto;color:var(--green);font-size:18px;font-family:Inter,sans-serif">&#10003;</div>
+      </div>
+    </div>
+    <div class="card" id="cms-wp-card" style="cursor:pointer" onclick="selectCMS('wordpress')">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:0" id="cms-wp-header">
+        <div style="width:36px;height:36px;border-radius:50%;background:#21759b22;border:2px solid #21759b;display:flex;align-items:center;justify-content:center;font-size:16px">W</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--white)">WordPress</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Auto-publish via REST API</div>
+        </div>
+        <div id="cms-wp-check" style="margin-left:auto;color:var(--green);font-size:18px;font-family:Inter,sans-serif;display:none">&#10003;</div>
+      </div>
+      <div id="cms-wp-fields" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px;background:rgba(0,224,106,0.05);border:1px solid rgba(0,224,106,0.2);border-radius:8px;padding:10px">
+          In WordPress: go to <strong style="color:var(--green)">Users &gt; Profile</strong>, scroll to <strong style="color:var(--green)">Application Passwords</strong>, add a new one called AutomateSEO and paste it below.
+        </div>
+        <div class="form-group">
+          <label>WordPress Site URL</label>
+          <input type="text" id="wp-url" placeholder="https://yoursite.com" oninput="state.wordpress_url=this.value"/>
+        </div>
+        <div class="form-group">
+          <label>WordPress Username</label>
+          <input type="text" id="wp-username" placeholder="admin" oninput="state.wordpress_username=this.value"/>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label>Application Password</label>
+          <input type="text" id="wp-password" placeholder="xxxx xxxx xxxx xxxx xxxx xxxx" oninput="state.wordpress_app_password=this.value"/>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="cms-shopify-card" style="cursor:pointer" onclick="selectCMS('shopify')">
+      <div style="display:flex;align-items:center;gap:14px" id="cms-shopify-header">
+        <div style="width:36px;height:36px;border-radius:50%;background:#96bf4822;border:2px solid #96bf48;display:flex;align-items:center;justify-content:center;font-size:16px">S</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--white)">Shopify</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Auto-publish to your Shopify blog</div>
+        </div>
+        <div id="cms-shopify-check" style="margin-left:auto;color:var(--green);font-size:18px;font-family:Inter,sans-serif;display:none">&#10003;</div>
+      </div>
+      <div id="cms-shopify-fields" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px;background:rgba(0,224,106,0.05);border:1px solid rgba(0,224,106,0.2);border-radius:8px;padding:10px">
+          In Shopify: go to <strong style="color:var(--green)">Settings &gt; Apps &gt; Develop apps</strong>, create an app, enable <strong style="color:var(--green)">write_content</strong> scope, and paste the Admin API token below.
+        </div>
+        <div class="form-group">
+          <label>Shopify Store Domain</label>
+          <input type="text" id="shopify-domain" placeholder="yourstore.myshopify.com" oninput="state.shopify_domain=this.value"/>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label>Admin API Access Token</label>
+          <input type="text" id="shopify-token" placeholder="shpat_xxxxxxxxxxxx" oninput="state.shopify_access_token=this.value"/>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-back" onclick="goTo('step3')">Back</button>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:12px;color:var(--muted)">Step 4 of 5</span>
+        <button class="btn-next" onclick="goTo('step5')">Next Step</button>
+      </div>
     </div>
   </div>
 </div>
@@ -215,14 +289,14 @@ textarea{resize:vertical;min-height:110px;line-height:1.6}
     <div class="checkbox-row"><input type="checkbox" id="agreeTerms"/><label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label></div>
     <button class="btn-full" onclick="createAccount()">Start free trial -></button>
     <div class="secure-note"><span style="font-size:20px"></span><div><div style="font-weight:600;color:var(--text);margin-bottom:2px">Secure Login</div><div>We'll send you a secure login link via email. No passwords needed!</div></div></div>
-    <div class="btn-row" style="border:none;padding-top:14px;margin-top:14px"><button class="btn-back" onclick="goTo('step3')">Back</button><span style="font-size:12px;color:var(--muted)">Step 5: Complete Account</span></div>
+    <div class="btn-row" style="border:none;padding-top:14px;margin-top:14px"><button class="btn-back" onclick="goTo('step4')">Back</button><span style="font-size:12px;color:var(--muted)">Step 5 of 5</span></div>
   </div>
 </div>
 <script>
 var BACKEND='https://automateseo-backend-production.up.railway.app';
 var state={websiteUrl:'',brandName:'',language:'en-AU',country:'AU',reach:'local',targetCities:'',businessDesc:'',exclusions:[],services:[],priorityService:'',competitors:[],email:''};
 function goTo(id){document.querySelectorAll('.step-page').forEach(function(p){p.classList.remove('active');});document.getElementById(id).classList.add('active');updateProg(id);window.scrollTo(0,0);}
-function updateProg(id){var bar=document.getElementById('progressBar');if(id==='step1'||id==='step1b'){bar.style.display='none';return;}bar.style.display='block';var map={step2:2,step3:3,step5:5};var cur=map[id]||2;[['1',1],['2',2],['3',3],['5',5]].forEach(function(pair){var d=document.getElementById('dot'+pair[0]);d.className='step-dot';var lbl=pair[0]==='5'?'4':pair[0];if(pair[1]<cur){d.classList.add('done');d.innerHTML='';}else if(pair[1]===cur){d.classList.add('active');d.innerHTML=lbl;}else{d.innerHTML=lbl;}});[['12',1],['23',2],['35',3]].forEach(function(pair){document.getElementById('line'+pair[0]).className='step-line'+(pair[1]<cur?' done':'');});}
+function updateProg(id){var bar=document.getElementById('progressBar');if(id==='step1'||id==='step1b'){bar.style.display='none';return;}bar.style.display='block';var map={step2:2,step3:3,step4:4,step5:5};var cur=map[id]||2;[['1',1],['2',2],['3',3],['4',4],['5',5]].forEach(function(pair){var d=document.getElementById('dot'+pair[0]);if(!d)return;d.className='step-dot';if(pair[1]<cur){d.classList.add('done');d.innerHTML='';}else if(pair[1]===cur){d.classList.add('active');d.innerHTML=pair[0];}else{d.innerHTML=pair[0];}});[['12',1],['23',2],['34',3],['45',4]].forEach(function(pair){var el=document.getElementById('line'+pair[0]);if(el)el.className='step-line'+(pair[1]<cur?' done':'');});}
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
 async function startAnalysis(){var url=document.getElementById('websiteUrl').value.trim();if(!url){document.getElementById('websiteUrl').focus();return;}state.websiteUrl=url;goTo('step1b');var msgs=['Scanning your website...','Identifying your business type...','Researching industry keywords...','Analysing competitor landscape...','Generating your business profile...','Almost done...'];var bar=document.getElementById('loadingBar');var st=document.getElementById('loadingStatus');for(var i=0;i<msgs.length;i++){await sleep(600);bar.style.width=((i+1)/msgs.length*100)+'%';st.textContent=msgs[i];}await sleep(500);await genBusinessData(url);goTo('step2');}
 function titleCase(str){return str.split(' ').map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join(' ');}
@@ -240,6 +314,18 @@ function popCompetitors(comps){state.competitors=comps;renderComps();}
 function addComp(){var i=document.getElementById('newComp');var v=i.value.trim().replace('https://','').replace('http://','').replace('www.','').split('/')[0];if(!v)return;state.competitors.push({domain:v,desc:'Competitor in your industry'});renderComps();i.value='';}
 function removeComp(i){state.competitors.splice(i,1);renderComps();}
 function renderComps(){var l=document.getElementById('competitorList');if(!state.competitors.length){l.innerHTML='<div style="text-align:center;padding:20px;color:var(--muted);font-size:14px;border:1px dashed var(--border);border-radius:var(--radius);margin-bottom:14px">No competitors yet - add one below or continue.</div>';return;}l.innerHTML=state.competitors.map(function(c,i){return '<div class="comp-item"><div class="comp-fav"><img src="https://www.google.com/s2/favicons?domain='+c.domain+'&sz=32" /></div><div style="flex:1"><div class="comp-domain">'+c.domain+'</div><div class="comp-desc">'+c.desc+'</div></div><button class="icon-btn del" onclick="removeComp('+i+')">x</button></div>';}).join('');}
+
+function selectCMS(type) {
+  state.cms_type = type;
+  ['none','wordpress','shopify'].forEach(function(t) {
+    var card = document.getElementById('cms-'+t+'-card');
+    var check = document.getElementById('cms-'+t+'-check');
+    var fields = document.getElementById('cms-'+t+'-fields');
+    if (card) card.style.border = t===type ? '2px solid var(--green)' : '1px solid var(--border)';
+    if (check) check.style.display = t===type ? 'block' : 'none';
+    if (fields) fields.style.display = t===type ? 'block' : 'none';
+  });
+}
 async function createAccount(){var email=document.getElementById('userEmail').value.trim();var agreed=document.getElementById('agreeTerms').checked;if(!email||email.indexOf('@')===-1){alert('Please enter a valid email address.');return;}if(!agreed){alert('Please agree to the Terms of Service and Privacy Policy.');return;}state.email=email;try{await fetch(BACKEND+'/api/onboarding',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(state)});}catch(e){}try{var resp=await fetch(BACKEND+'/api/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,websiteUrl:state.websiteUrl})});var d=await resp.json();if(d.url){window.location.href=d.url;}else{alert('Something went wrong. Please contact hello@automateseo.com.au');}}catch(e){alert('Something went wrong. Please contact hello@automateseo.com.au');}}
 document.addEventListener('DOMContentLoaded',function(){var p=new URLSearchParams(window.location.search);var url=p.get('url');if(url){document.getElementById('websiteUrl').value=url;setTimeout(startAnalysis,200);}});
 </script>
