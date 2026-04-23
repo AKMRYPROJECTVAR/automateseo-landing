@@ -349,6 +349,46 @@ document.addEventListener('DOMContentLoaded', function() {
   var email = p.get('email');
   if (email) { document.getElementById('loginEmail').value = email; login(); }
 });
+
+var _artTxt='';
+function openArt(id){
+  var m=document.getElementById('artModal');
+  m.classList.add('open');
+  document.getElementById('mTitle').textContent='Loading...';
+  document.getElementById('mBody').innerHTML='<p style="color:#555">Fetching article...</p>';
+  document.getElementById('mMeta').innerHTML='';
+  document.getElementById('mDate').textContent='';
+  document.getElementById('mLive').style.display='none';
+  fetch(SUPABASE_URL+'/rest/v1/articles?id=eq.'+id+'&select=*',{headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY}})
+    .then(function(r){return r.json();})
+    .then(function(rows){
+      var a=rows[0];
+      if(!a){document.getElementById('mBody').innerHTML='<p>Not found.</p>';return;}
+      _artTxt=a.title+'\n\n'+(a.content||'').replace(/<[^>]+>/g,'');
+      document.getElementById('mTitle').textContent=a.title;
+      var sc=a.status==='published'?'#00E06A':'#888';
+      var sb=a.status==='published'?'rgba(0,224,106,0.1)':'rgba(136,136,136,0.1)';
+      var meta='<span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;color:'+sc+';background:'+sb+';border:1px solid '+sc+'33;text-transform:uppercase">'+a.status+'</span>';
+      if(a.keyword)meta+=' <span style="font-size:12px;color:#00E06A;background:rgba(0,224,106,0.08);border:1px solid rgba(0,224,106,0.2);border-radius:100px;padding:3px 10px">'+a.keyword+'</span>';
+      if(a.word_count)meta+=' <span style="font-size:12px;color:#888">'+a.word_count+' words</span>';
+      document.getElementById('mMeta').innerHTML=meta;
+      document.getElementById('mBody').innerHTML=a.content||'<p style="color:#555">No content stored yet.</p>';
+      var dt=a.published_at?new Date(a.published_at):new Date(a.created_at);
+      document.getElementById('mDate').textContent='Generated '+dt.toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'});
+      if(a.published_url){var lv=document.getElementById('mLive');lv.href=a.published_url;lv.style.display='inline-flex';}
+    })
+    .catch(function(e){document.getElementById('mBody').innerHTML='<p style="color:#f55">Error: '+e.message+'</p>';});
+}
+document.getElementById('mClose').addEventListener('click',function(){document.getElementById('artModal').classList.remove('open');});
+document.getElementById('artModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+document.getElementById('mCopy').addEventListener('click',function(){
+  navigator.clipboard.writeText(_artTxt).then(function(){
+    document.getElementById('mCopy').textContent='Copied!';
+    setTimeout(function(){document.getElementById('mCopy').textContent='Copy text';},2000);
+  });
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('artModal').classList.remove('open');});
+
 </script>
 
 <!-- Article Reader Modal -->
