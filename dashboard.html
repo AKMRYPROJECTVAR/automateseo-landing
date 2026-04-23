@@ -1,6 +1,6 @@
 
           articleHtml += '<div style="display:flex;gap:10px;align-items:center;margin-top:12px">';
-          articleHtml += '<button class="readbtn" onclick="openArt(\'' + article.id + '\')" >Read article</button>';
+          articleHtml += '<button class="readbtn" onclick="event.stopPropagation();openArt(\'' + article.id + '\')" >Read article</button>';
           articleHtml += '</div>';
           <!DOCTYPE html>
 <html lang="en">
@@ -384,18 +384,15 @@ function openArt(id){
     .catch(function(e){document.getElementById('mBody').innerHTML='<p style="color:#f55">Error: '+e.message+'</p>';});
 }
 document.addEventListener('DOMContentLoaded',function(){
-  var mClose=document.getElementById('mClose');
-  var mModal=document.getElementById('artModal');
-  var mCopy=document.getElementById('mCopy');
-  if(mClose)mClose.addEventListener('click',function(){mModal.classList.remove('open');});
-  if(mModal)mModal.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
-  if(mCopy)mCopy.addEventListener('click',function(){
+  document.getElementById('mClose').onclick=function(){document.getElementById('artModal').classList.remove('open');};
+  document.getElementById('artModal').onclick=function(e){if(e.target===this)this.classList.remove('open');};
+  document.getElementById('mCopy').onclick=function(){
     navigator.clipboard.writeText(_artTxt).then(function(){
-      mCopy.textContent='Copied!';
-      setTimeout(function(){mCopy.textContent='Copy text';},2000);
+      var b=document.getElementById('mCopy');b.textContent='Copied!';
+      setTimeout(function(){b.textContent='Copy text';},2000);
     });
-  });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mModal)mModal.classList.remove('open');});
+  };
+  document.onkeydown=function(e){if(e.key==='Escape')document.getElementById('artModal').classList.remove('open');};
 });
 
 </script>
