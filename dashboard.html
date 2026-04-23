@@ -325,5 +325,26 @@ document.addEventListener('DOMContentLoaded', function() {
   if (email) { document.getElementById('loginEmail').value = email; login(); }
 });
 </script>
+
+<!-- Article Reader Modal -->
+<div class="modal-overlay" id="articleModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <div class="modal-footer-meta" id="modalFooterMeta"></div>
+      <div class="modal-footer-btns">
+        <button class="btn-copy" id="modalCopyBtn" onclick="copyArticle()">Copy article</button>
+        <a class="btn-live" id="modalLiveBtn" href="#" target="_blank" style="display:none">View live &#8599;</a>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
