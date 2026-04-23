@@ -383,15 +383,20 @@ function openArt(id){
     })
     .catch(function(e){document.getElementById('mBody').innerHTML='<p style="color:#f55">Error: '+e.message+'</p>';});
 }
-document.getElementById('mClose').addEventListener('click',function(){document.getElementById('artModal').classList.remove('open');});
-document.getElementById('artModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
-document.getElementById('mCopy').addEventListener('click',function(){
-  navigator.clipboard.writeText(_artTxt).then(function(){
-    document.getElementById('mCopy').textContent='Copied!';
-    setTimeout(function(){document.getElementById('mCopy').textContent='Copy text';},2000);
+document.addEventListener('DOMContentLoaded',function(){
+  var mClose=document.getElementById('mClose');
+  var mModal=document.getElementById('artModal');
+  var mCopy=document.getElementById('mCopy');
+  if(mClose)mClose.addEventListener('click',function(){mModal.classList.remove('open');});
+  if(mModal)mModal.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+  if(mCopy)mCopy.addEventListener('click',function(){
+    navigator.clipboard.writeText(_artTxt).then(function(){
+      mCopy.textContent='Copied!';
+      setTimeout(function(){mCopy.textContent='Copy text';},2000);
+    });
   });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mModal)mModal.classList.remove('open');});
 });
-document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('artModal').classList.remove('open');});
 
 </script>
 
