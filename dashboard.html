@@ -123,7 +123,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 5%;h
       <div class="page-title">Your Content Dashboard</div>
       <div class="page-sub" id="dashSubtitle">Articles published automatically every day to your website.</div>
     </div>
-    <div class="stats-row">
+    <div id="cmsBanner" style="display:none" class="cms-banner">
+  <div>
+    <div class="cms-banner-text">&#9888; Your website is not connected</div>
+    <div class="cms-banner-sub">Articles are being generated but not published to your site. Connect WordPress or Shopify to auto-publish.</div>
+  </div>
+  <button class="cms-banner-btn" onclick="document.getElementById('cmsCard').scrollIntoView({behavior:'smooth'})">Connect Now</button>
+</div>
+<div class="stats-row">
       <div class="stat-card"><div class="stat-label">Total Articles</div><div class="stat-value" id="statTotal">-</div></div>
       <div class="stat-card"><div class="stat-label">Published</div><div class="stat-value green" id="statPublished">-</div></div>
       <div class="stat-card"><div class="stat-label">This Month</div><div class="stat-value" id="statMonth">-</div></div>
@@ -238,6 +245,9 @@ function renderDashboard(data) {
   document.getElementById('statPublished').textContent = published;
   document.getElementById('statMonth').textContent = thisMonth;
   document.getElementById('statCMS').textContent = client.cms_type && client.cms_type !== 'none' ? client.cms_type.charAt(0).toUpperCase() + client.cms_type.slice(1) : 'None';
+  // Show/hide CMS banner
+  var banner = document.getElementById('cmsBanner');
+  if (banner) banner.style.display = (!client.cms_type || client.cms_type === 'none') ? 'flex' : 'none';
 
   // Account info
   var accountHtml = [
