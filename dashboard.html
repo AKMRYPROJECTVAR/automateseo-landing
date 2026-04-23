@@ -89,6 +89,31 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 5%;h
 .alert-error{background:rgba(255,85,85,0.1);border:1px solid rgba(255,85,85,0.3);color:#ff5555}
 .alert-success{background:rgba(0,224,106,0.1);border:1px solid rgba(0,224,106,0.3);color:var(--green)}
 @media(max-width:768px){.grid{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}}
+.mo{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:500;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(6px)}
+.mo.open{display:flex}
+.mb{background:#161616;border:1px solid #242424;border-radius:16px;width:100%;max-width:760px;margin:auto}
+.mh{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 28px;border-bottom:1px solid #242424}
+.mt{font-family:"Syne",sans-serif;font-size:21px;font-weight:800;color:#fff;line-height:1.3}
+.mm{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.mc{width:34px;height:34px;border-radius:50%;background:#222;border:none;cursor:pointer;color:#888;font-size:16px;line-height:1;flex-shrink:0}
+.mc:hover{background:#333;color:#fff}
+.mbd{padding:28px;max-height:68vh;overflow-y:auto;line-height:1.8}
+.mbd h2{font-size:17px;font-weight:700;color:#fff;margin:20px 0 8px}
+.mbd h3{font-size:14px;font-weight:700;color:#ddd;margin:16px 0 6px}
+.mbd p{font-size:14px;color:#aaa;margin-bottom:12px}
+.mbd ul,.mbd ol{padding-left:20px;margin-bottom:12px}
+.mbd li{font-size:14px;color:#aaa;margin-bottom:4px}
+.mbd strong{color:#e0e0e0}
+.mbd h2:first-child,.mbd h3:first-child{margin-top:0}
+.mf{padding:16px 28px;border-top:1px solid #242424;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.mfm{font-size:12px;color:#444}
+.mfb{display:flex;gap:10px}
+.bcopy{background:transparent;border:1px solid rgba(0,224,106,0.4);color:#00E06A;font-size:12px;font-weight:700;padding:8px 16px;border-radius:8px;cursor:pointer;font-family:inherit}
+.bcopy:hover{background:rgba(0,224,106,0.06)}
+.blive{background:#00E06A;color:#0A0A0A;font-size:12px;font-weight:700;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.blive:hover{opacity:0.9}
+.readbtn{font-size:12px;font-weight:700;padding:7px 16px;border-radius:8px;border:1px solid rgba(0,224,106,0.4);color:#00E06A;background:transparent;cursor:pointer;font-family:inherit;margin-top:12px}
+.readbtn:hover{background:rgba(0,224,106,0.06)}
 </style>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
@@ -346,5 +371,14 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </div>
+<div class="mo" id="artModal">
+<div class="mb">
+<div class="mh"><div><div class="mt" id="mTitle">Loading...</div><div class="mm" id="mMeta"></div></div>
+<button class="mc" id="mClose">&#x2715;</button></div>
+<div class="mbd" id="mBody"><p style="color:#555">Loading article...</p></div>
+<div class="mf"><div class="mfm" id="mDate"></div><div class="mfb">
+<button class="bcopy" id="mCopy">Copy text</button>
+<a class="blive" id="mLive" href="#" target="_blank" style="display:none">View live &#8599;</a>
+</div></div></div></div>
 </body>
 </html>
