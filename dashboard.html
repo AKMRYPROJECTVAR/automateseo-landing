@@ -357,17 +357,20 @@ document.addEventListener('DOMContentLoaded', function() {
 var _artTxt='';
 function openArt(id){
   var m=document.getElementById('artModal');
+  if(!m){alert('Modal not found');return;}
   m.classList.add('open');
   document.getElementById('mTitle').textContent='Loading...';
   document.getElementById('mBody').innerHTML='<p style="color:#555">Fetching article...</p>';
   document.getElementById('mMeta').innerHTML='';
   document.getElementById('mDate').textContent='';
   document.getElementById('mLive').style.display='none';
-  fetch('https://bccbndxjlzmcwhqayuvv.supabase.co/rest/v1/articles?id=eq.'+id+'&select=*',{headers:{apikey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjY2JuZHhqbHptY3docWF5dXZ2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjY1NzQ4NSwiZXhwIjoyMDkyMjMzNDg1fQ.zh9WPyvqWIYMpRhMolp1Fep79o4OvY2ac11wZSADbE8',Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjY2JuZHhqbHptY3docWF5dXZ2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjY1NzQ4NSwiZXhwIjoyMDkyMjMzNDg1fQ.zh9WPyvqWIYMpRhMolp1Fep79o4OvY2ac11wZSADbE8'}})
-    .then(function(r){return r.json();})
+  var SB='https://bccbndxjlzmcwhqayuvv.supabase.co';
+  var SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjY2JuZHhqbHptY3docWF5dXZ2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjY1NzQ4NSwiZXhwIjoyMDkyMjMzNDg1fQ.zh9WPyvqWIYMpRhMolp1Fep79o4OvY2ac11wZSADbE8';
+  fetch(SB+'/rest/v1/articles?id=eq.'+id+'&select=*',{headers:{apikey:SK,Authorization:'Bearer '+SK}})
+    .then(function(res){return res.json();})
     .then(function(rows){
       var a=rows[0];
-      if(!a){document.getElementById('mBody').innerHTML='<p>Not found.</p>';return;}
+      if(!a){document.getElementById('mBody').innerHTML='<p>Article not found.</p>';return;}
       _artTxt=a.title+'\n\n'+(a.content||'').replace(/<[^>]+>/g,'');
       document.getElementById('mTitle').textContent=a.title;
       var sc=a.status==='published'?'#00E06A':'#888';
@@ -379,7 +382,7 @@ function openArt(id){
       document.getElementById('mBody').innerHTML=a.content||'<p style="color:#555">No content stored yet.</p>';
       var dt=a.published_at?new Date(a.published_at):new Date(a.created_at);
       document.getElementById('mDate').textContent='Generated '+dt.toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'});
-      if(a.published_url){var lv=document.getElementById('mLive');lv.href=a.published_url;lv.style.display='inline-flex';}
+      if(a.published_url){document.getElementById('mLive').href=a.published_url;document.getElementById('mLive').style.display='inline-flex';}
     })
     .catch(function(e){document.getElementById('mBody').innerHTML='<p style="color:#f55">Error: '+e.message+'</p>';});
 }
