@@ -1,6 +1,6 @@
 
           articleHtml += '<div style="display:flex;gap:10px;align-items:center;margin-top:12px">';
-          articleHtml += '<button class="readbtn" onclick="event.stopPropagation();openArt(\'' + article.id + '\')" >Read article</button>';
+          articleHtml += '<button class="readbtn" data-artid="' + article.id + '">Read article</button>';
           articleHtml += '</div>';
           <!DOCTYPE html>
 <html lang="en">
@@ -387,6 +387,10 @@ function openArt(id){
     .catch(function(e){document.getElementById('mBody').innerHTML='<p style="color:#f55">Error: '+e.message+'</p>';});
 }
 document.addEventListener('DOMContentLoaded',function(){
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('.readbtn');
+    if(btn){e.stopPropagation();var id=btn.getAttribute('data-artid');if(id)openArt(id);}
+  });
   document.getElementById('mClose').onclick=function(){document.getElementById('artModal').classList.remove('open');};
   document.getElementById('artModal').onclick=function(e){if(e.target===this)this.classList.remove('open');};
   document.getElementById('mCopy').onclick=function(){
