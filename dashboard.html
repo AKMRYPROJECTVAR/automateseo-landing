@@ -291,15 +291,72 @@ function renderDashboard(data) {
   // Articles
   document.getElementById('articleCount').textContent = articles.length + ' total';
   if (articles.length === 0) {
-    document.getElementById('articlesList').innerHTML = '<div class="empty-state"><div class="empty-icon">&#128196;</div><div class="empty-title">No articles yet</div><div>Your first article will be published tonight at 9am AEST.</div></div>';
-  } else {
-    document.getElementById('articlesList').innerHTML = articles.map(function(a) {
-      var badgeClass = a.status === 'published' ? 'badge-published' : (a.status === 'publishing' ? 'badge-publishing' : 'badge-generated');
-      var badgeLabel = a.status === 'published' ? '&#10003; Published' : (a.status === 'publishing' ? '... Publishing' : 'Saved');
-      var pubLink = a.published_url ? '<a href="'+a.published_url+'" target="_blank" class="pub-link">&#128279; '+a.published_url+'</a>' : '';
-      var date = new Date(a.created_at).toLocaleDateString('en-AU', {day:'numeric',month:'short',year:'numeric'});
-      return '<div class="article-card"><div class="article-title">'+a.title+'</div><div class="article-meta" style="margin-top:8px"><span class="badge '+badgeClass+'">'+badgeLabel+'</span><span class="article-keyword">'+a.keyword+'</span><span class="article-date">'+date+'</span>'+(a.word_count?'<span class="article-words">'+a.word_count+' words</span>':'')+'</div>'+pubLink+'</div>';
-    }).join('');
+    (function() {
+      var list = document.getElementById('articlesList');
+      list.innerHTML = '';
+      window._articleMap = {};
+      articles.forEach(function(a) {
+        window._articleMap[a.id] = a;
+        var card = document.createElement('div');
+        card.className = 'article-card';
+
+        var titleEl = document.createElement('div');
+        titleEl.className = 'article-title';
+        titleEl.textContent = a.title;
+        card.appendChild(titleEl);
+
+        var meta = document.createElement('div');
+        meta.className = 'article-meta';
+        meta.style.marginTop = '8px';
+
+        var badge = document.createElement('span');
+        var isPublished = a.status === 'published';
+        badge.className = 'badge ' + (isPublished ? 'badge-published' : 'badge-generated');
+        badge.textContent = isPublished ? '\u2713 Published' : '\u29e6 Generated';
+        meta.appendChild(badge);
+
+        if (a.keyword) {
+          var kw = document.createElement('span');
+          kw.className = 'article-keyword';
+          kw.textContent = a.keyword;
+          meta.appendChild(kw);
+        }
+        var dateStr = a.published_at || a.created_at;
+        if (dateStr) {
+          var dt = document.createElement('span');
+          dt.className = 'article-date';
+          dt.textContent = new Date(dateStr).toLocaleDateString('en-AU', {day:'numeric',month:'short',year:'numeric'});
+          meta.appendChild(dt);
+        }
+        if (a.word_count) {
+          var wc = document.createElement('span');
+          wc.className = 'article-words';
+          wc.textContent = a.word_count + ' words';
+          meta.appendChild(wc);
+        }
+        card.appendChild(meta);
+
+        var actions = document.createElement('div');
+        actions.style.cssText = 'display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap';
+
+        var readBtn = document.createElement('button');
+        readBtn.className = 'readbtn';
+        readBtn.textContent = 'Read article';
+        readBtn.setAttribute('data-artid', a.id);
+        actions.appendChild(readBtn);
+
+        if (a.published_url) {
+          var liveLink = document.createElement('a');
+          liveLink.href = a.published_url;
+          liveLink.target = '_blank';
+          liveLink.style.cssText = 'font-size:12px;color:#888;text-decoration:none;display:inline-flex;align-items:center;gap:3px';
+          liveLink.textContent = '\u2197 View live';
+          actions.appendChild(liveLink);
+        }
+        card.appendChild(actions);
+        list.appendChild(card);
+      });
+    }())
   }
 
   // CMS
