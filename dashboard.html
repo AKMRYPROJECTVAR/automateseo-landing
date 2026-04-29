@@ -1,7 +1,3 @@
-
-          articleHtml += '<div style="display:flex;gap:10px;align-items:center;margin-top:12px">';
-          articleHtml += '';
-          articleHtml += '</div>';
           <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -291,7 +287,7 @@ function renderDashboard(data) {
 
   // Articles
   document.getElementById('articleCount').textContent = articles.length + ' total';
-  if (articles.length === 0) {
+  if (articles.length > 0) {
     (function() {
       var list = document.getElementById('articlesList');
       list.innerHTML = '';
@@ -373,6 +369,9 @@ function renderDashboard(data) {
   if (client.wordpress_username) document.getElementById('d-wp-user').value = client.wordpress_username;
   if (client.shopify_domain) document.getElementById('d-sh-domain').value = client.shopify_domain;
 }
+  } else {
+    document.getElementById('articlesList').innerHTML = '<div class="empty-state"><div class="empty-icon">&#9998;</div><div class="empty-title">No articles yet</div><p style="font-size:14px;color:var(--muted);margin-top:6px">Your first article will appear here once it has been generated.</p></div>';
+  }
 
 function setCMSOption(type) {
   ['none','wordpress','shopify'].forEach(function(t){
@@ -461,27 +460,6 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 </script>
-
-<!-- Article Reader Modal -->
-<div class="modal-overlay" id="articleModal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <div class="modal-header">
-      <div>
-        <div class="modal-title" id="modalTitle"></div>
-        <div class="modal-meta" id="modalMeta"></div>
-      </div>
-      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
-    </div>
-    <div class="modal-body" id="modalBody"></div>
-    <div class="modal-footer">
-      <div class="modal-footer-meta" id="modalFooterMeta"></div>
-      <div class="modal-footer-btns">
-        <button class="btn-copy" id="modalCopyBtn" onclick="copyArticle()">Copy article</button>
-        <a class="btn-live" id="modalLiveBtn" href="#" target="_blank" style="display:none">View live &#8599;</a>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="mo" id="artModal">
 <div class="mb">
 <div class="mh"><div><div class="mt" id="mTitle">Loading...</div><div class="mm" id="mMeta"></div></div>
