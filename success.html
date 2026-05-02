@@ -9,6 +9,16 @@
   gtag('js', new Date());
   gtag('config', 'G-PJT9XKM11X');
 </script>
+<script>
+  window.addEventListener('load', function() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'trial_started', {
+        event_category: 'conversion',
+        event_label: 'free_trial_signup'
+      });
+    }
+  });
+</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Welcome to AutomateSEO</title>
