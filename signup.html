@@ -142,15 +142,7 @@ fbq('track', 'Lead');
 !function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};ttq.load('D7SMGVJC77U1G0JPMUI0');ttq.page();}(window,document,'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
-<!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-  ttq.load('D7SMGVJC77U1G0JPMUI0');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
+
 </head>
 <body>
 <nav>
@@ -339,7 +331,7 @@ fbq('track', 'Lead');
 </div>
 <script>
 var BACKEND='https://automateseo-backend-production.up.railway.app';
-var state={websiteUrl:'',brandName:'',language:'en-AU',country:'AU',reach:'local',targetCities:'',businessDesc:'',exclusions:[],services:[],priorityService:'',competitors:[],email:''};
+var state={websiteUrl:'',brandName:'',language:'en-AU',country:'AU',reach:'local',targetCities:'',businessDesc:'',exclusions:[],services:[],priorityService:'',competitors:[],email:'',cms_type:'none'};
 function goTo(id){document.querySelectorAll('.step-page').forEach(function(p){p.classList.remove('active');});document.getElementById(id).classList.add('active');updateProg(id);window.scrollTo(0,0);}
 function updateProg(id){var bar=document.getElementById('progressBar');if(id==='step1'||id==='step1b'){bar.style.display='none';return;}bar.style.display='block';var map={step2:2,step3:3,step4:4,step5:5};var cur=map[id]||2;[['1',1],['2',2],['3',3],['4',4],['5',5]].forEach(function(pair){var d=document.getElementById('dot'+pair[0]);if(!d)return;d.className='step-dot';if(pair[1]<cur){d.classList.add('done');d.innerHTML='';}else if(pair[1]===cur){d.classList.add('active');d.innerHTML=pair[0];}else{d.innerHTML=pair[0];}});[['12',1],['23',2],['34',3],['45',4]].forEach(function(pair){var el=document.getElementById('line'+pair[0]);if(el)el.className='step-line'+(pair[1]<cur?' done':'');});}
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
