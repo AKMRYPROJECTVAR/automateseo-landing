@@ -354,13 +354,15 @@ function renderComps(){var l=document.getElementById('competitorList');if(!state
 
 function selectCMS(type) {
   state.cms_type = type;
-  ['none','wordpress','shopify'].forEach(function(t) {
-    var card = document.getElementById('cms-'+t+'-card');
-    var check = document.getElementById('cms-'+t+'-check');
-    var fields = document.getElementById('cms-'+t+'-fields');
-    if (card) card.style.border = t===type ? '2px solid var(--green)' : '1px solid var(--border)';
-    if (check) check.style.display = t===type ? 'block' : 'none';
-    if (fields) fields.style.display = t===type ? 'block' : 'none';
+  var idMap = { none: 'none', wordpress: 'wp', shopify: 'shopify' };
+  ['none', 'wordpress', 'shopify'].forEach(function(t) {
+    var id = idMap[t];
+    var card = document.getElementById('cms-' + id + '-card');
+    var check = document.getElementById('cms-' + id + '-check');
+    var fields = document.getElementById('cms-' + id + '-fields');
+    if (card) card.style.border = t === type ? '2px solid var(--green)' : '1px solid var(--border)';
+    if (check) check.style.display = t === type ? 'block' : 'none';
+    if (fields) fields.style.display = t === type ? 'block' : 'none';
   });
 }
 
