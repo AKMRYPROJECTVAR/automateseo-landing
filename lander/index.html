@@ -140,11 +140,20 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1488130649568182&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel -->
+
+<script>
+var _leadFired = false;
+function trackLead(){
+  if(_leadFired) return;
+  _leadFired = true;
+  if(typeof fbq !== 'undefined') fbq('track', 'Lead');
+}
+</script>
 </head>
 <body>
 <nav>
   <a href="#" class="nav-logo">Automate<span>SEO</span></a>
-  <a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')" class="nav-cta">Start Free Trial</a>
+  <a href="https://www.automateseo.com.au/signup.html" onclick="trackLead()" class="nav-cta">Start Free Trial</a>
 </nav>
 <section class="hero">
   <div class="wrap">
@@ -152,7 +161,7 @@ src="https://www.facebook.com/tr?id=1488130649568182&ev=PageView&noscript=1"
     <h1>Fire your <span class="strike">SEO agency</span><br>Keep the <span class="accent">results.</span></h1>
     <p class="hero-sub">Your SEO agency charges <strong>$2,000 to $5,000 a month</strong> to send you a PDF report and go silent. AutomateSEO does the same job automatically, at a fraction of the cost.</p>
     <div class="hero-actions">
-      <a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')" class="btn-primary">Start Free Trial</a>
+      <a href="https://www.automateseo.com.au/signup.html" onclick="trackLead()" class="btn-primary">Start Free Trial</a>
       <a href="#how" class="btn-ghost">See how it works &rarr;</a>
     </div>
     <div class="hero-proof">
@@ -245,7 +254,7 @@ src="https://www.facebook.com/tr?id=1488130649568182&ev=PageView&noscript=1"
         <div class="price-feature"><span class="feat-check">✓</span>You own everything, forever</div>
         <div class="price-feature"><span class="feat-check">✓</span>Cancel anytime. No lock-in.</div>
       </div>
-      <a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')" class="btn-full">Start My Free Trial &rarr;</a>
+      <a href="https://www.automateseo.com.au/signup.html" onclick="trackLead()" class="btn-full">Start My Free Trial &rarr;</a>
     </div>
   </div>
 </section>
@@ -264,14 +273,14 @@ src="https://www.facebook.com/tr?id=1488130649568182&ev=PageView&noscript=1"
   <div class="wrap">
     <h2>Stop paying for<br><span>someone else's salary.</span></h2>
     <p>Try AutomateSEO free for 3 days. No contracts. Cancel anytime.</p>
-    <div class="cta-actions"><a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')" class="btn-primary">Get Started Free &rarr;</a></div>
+    <div class="cta-actions"><a href="https://www.automateseo.com.au/signup.html" onclick="trackLead()" class="btn-primary">Get Started Free &rarr;</a></div>
     <p class="no-lock">3-day free trial &middot; Cancel anytime &middot; 5 minute setup</p>
   </div>
 </section>
 <footer>
   <div class="wrap">
     <a href="#" class="footer-logo">Automate<span>SEO</span></a>
-    <div class="footer-links"><a href="https://www.automateseo.com.au">Home</a><a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')">Sign Up</a></div>
+    <div class="footer-links"><a href="https://www.automateseo.com.au">Home</a><a href="https://www.automateseo.com.au/signup.html" onclick="trackLead()">Sign Up</a></div>
   </div>
 </footer>
 
