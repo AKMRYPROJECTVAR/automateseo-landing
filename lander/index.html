@@ -123,11 +123,28 @@
   .stat-label { font-size: 13px; color: var(--muted); line-height: 1.4; }
   .stat-label strong { color: var(--text); font-weight: 500; }
 </style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1488130649568182');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1488130649568182&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel -->
 </head>
 <body>
 <nav>
   <a href="#" class="nav-logo">Automate<span>SEO</span></a>
-  <a href="https://www.automateseo.com.au/signup.html" class="nav-cta">Start Free Trial</a>
+  <a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')" class="nav-cta">Start Free Trial</a>
 </nav>
 <section class="hero">
   <div class="wrap">
@@ -135,7 +152,7 @@
     <h1>Fire your <span class="strike">SEO agency</span><br>Keep the <span class="accent">results.</span></h1>
     <p class="hero-sub">Your SEO agency charges <strong>$2,000 to $5,000 a month</strong> to send you a PDF report and go silent. AutomateSEO does the same job automatically, at a fraction of the cost.</p>
     <div class="hero-actions">
-      <a href="https://www.automateseo.com.au/signup.html" class="btn-primary">Start Free Trial</a>
+      <a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')" class="btn-primary">Start Free Trial</a>
       <a href="#how" class="btn-ghost">See how it works &rarr;</a>
     </div>
     <div class="hero-proof">
@@ -228,7 +245,7 @@
         <div class="price-feature"><span class="feat-check">✓</span>You own everything, forever</div>
         <div class="price-feature"><span class="feat-check">✓</span>Cancel anytime. No lock-in.</div>
       </div>
-      <a href="https://www.automateseo.com.au/signup.html" class="btn-full">Start My Free Trial &rarr;</a>
+      <a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')" class="btn-full">Start My Free Trial &rarr;</a>
     </div>
   </div>
 </section>
@@ -247,15 +264,19 @@
   <div class="wrap">
     <h2>Stop paying for<br><span>someone else's salary.</span></h2>
     <p>Try AutomateSEO free for 3 days. No contracts. Cancel anytime.</p>
-    <div class="cta-actions"><a href="https://www.automateseo.com.au/signup.html" class="btn-primary">Get Started Free &rarr;</a></div>
+    <div class="cta-actions"><a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')" class="btn-primary">Get Started Free &rarr;</a></div>
     <p class="no-lock">3-day free trial &middot; Cancel anytime &middot; 5 minute setup</p>
   </div>
 </section>
 <footer>
   <div class="wrap">
     <a href="#" class="footer-logo">Automate<span>SEO</span></a>
-    <div class="footer-links"><a href="https://www.automateseo.com.au">Home</a><a href="https://www.automateseo.com.au/signup.html">Sign Up</a></div>
+    <div class="footer-links"><a href="https://www.automateseo.com.au">Home</a><a href="https://www.automateseo.com.au/signup.html" onclick="if(typeof fbq!=='undefined') fbq('track', 'Lead')">Sign Up</a></div>
   </div>
 </footer>
+
+<script>
+setTimeout(function(){ if(typeof fbq !== 'undefined') fbq('track', 'ViewContent'); }, 3000);
+</script>
 </body>
   </html>
