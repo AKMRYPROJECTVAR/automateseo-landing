@@ -115,6 +115,13 @@
   .hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
   .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
   .hero-proof { animation: fadeUp 0.6s 0.4s ease both; }
+
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 480px; margin: 0 auto 40px; }
+  .stat-box { background: var(--card); border: 1px solid var(--green-dark); border-radius: var(--radius-lg); padding: 24px 20px; text-align: center; position: relative; overflow: hidden; }
+  .stat-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--green), transparent); }
+  .stat-number { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: var(--green); line-height: 1; margin-bottom: 6px; letter-spacing: -1px; }
+  .stat-label { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .stat-label strong { color: var(--text); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -196,6 +203,16 @@
     <div class="section-label">Pricing</div>
     <h2>Costs less than one hour of agency time.</h2>
     <p class="sub">Everything your SEO agency does. Automated. For a fraction of the price.</p>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-number">1</div>
+        <div class="stat-label"><strong>Article published</strong><br>to your site every day</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">10</div>
+        <div class="stat-label"><strong>Backlinks built</strong><br>every single month</div>
+      </div>
+    </div>
     <div class="price-card">
       <div class="agency-crossed">Agency retainer: <span class="old-price">$3,000/mo</span></div>
       <div class="new-price-row"><span class="new-price">$197</span><span class="price-period">/month</span></div>
