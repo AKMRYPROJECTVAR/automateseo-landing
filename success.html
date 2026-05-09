@@ -84,17 +84,21 @@ fbq('init','1488130649568182');fbq('track','PageView');fbq('track','StartTrial',
   <div class="box">
     <div class="icon">&#10003;</div>
     <h1>You're all set!</h1>
-    <p class="sub">Welcome to AutomateSEO. Your first expert SEO article will be published to your website tonight. Here's what happens next.</p>
+    <p class="sub">Welcome to AutomateSEO. Your trial is active and your SEO workspace is being prepared now. Here's what happens next.</p>
     <div class="steps-wrap">
       <div class="steps-title">What happens now</div>
-      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Tonight (9am AEST)</strong>Our AI researches your business and publishes your first expert SEO article directly to your site.</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Every day after that</strong>A fresh keyword-targeted article is published automatically. No action needed from you.</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>View your articles anytime</strong>Log in to your dashboard with your email to see all published articles, their keywords, and live URLs.</div></div>
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Right now</strong>We are saving your business profile and preparing your first SEO topics from your website.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Connect when ready</strong>If you connected WordPress or Shopify, articles can auto-publish. If not, they will be saved in your dashboard until you connect.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>View your articles anytime</strong>Open your dashboard with the same email you used at checkout to see articles, keywords, and live URLs.</div></div>
       <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Results in 6-10 weeks</strong>Rankings improve as Google indexes your content. Most clients see significant traffic growth by day 90.</div></div>
     </div>
-    <a href="/dashboard.html" class="btn">Go to your Dashboard</a>
+    <a href="/dashboard.html" class="btn" id="dashboardLink">Go to your Dashboard</a>
     <p class="note">Questions? Email us at <a href="mailto:hello@automateseo.com.au" style="color:var(--green)">hello@automateseo.com.au</a></p>
   </div>
 </div>
+<script>
+var email = new URLSearchParams(window.location.search).get('email');
+if (email) document.getElementById('dashboardLink').href = '/dashboard.html?email=' + encodeURIComponent(email);
+</script>
 </body>
 </html>
