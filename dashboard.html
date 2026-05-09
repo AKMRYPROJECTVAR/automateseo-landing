@@ -460,12 +460,10 @@ function openArt(id){
   document.getElementById('mMeta').innerHTML='';
   document.getElementById('mDate').textContent='';
   document.getElementById('mLive').style.display='none';
-  var SB='https://bccbndxjlzmcwhqayuvv.supabase.co';
-  var SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjY2JuZHhqbHptY3docWF5dXZ2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjY1NzQ4NSwiZXhwIjoyMDkyMjMzNDg1fQ.zh9WPyvqWIYMpRhMolp1Fep79o4OvY2ac11wZSADbE8';
-  fetch(SB+'/rest/v1/articles?id=eq.'+id+'&select=*',{headers:{apikey:SK,Authorization:'Bearer '+SK}})
-    .then(function(res){return res.json();})
-    .then(function(rows){
-      var a=rows[0];
+  fetch(BACKEND + '/api/dashboard/' + encodeURIComponent(currentEmail) + '/articles/' + encodeURIComponent(id))
+    .then(function(res){if(!res.ok)throw new Error('Article not found');return res.json();})
+    .then(function(data){
+      var a=data.article;
       if(!a){document.getElementById('mBody').innerHTML='<p>Article not found.</p>';return;}
       _artTxt=a.title+'\n\n'+(a.content||'').replace(/<[^>]+>/g,'');
       document.getElementById('mTitle').textContent=a.title;
