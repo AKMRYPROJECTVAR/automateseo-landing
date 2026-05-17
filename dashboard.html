@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());h
+  gtag('js', new Date());
   gtag('config', 'G-PJT9XKM11X');
 </script>
 <meta charset="UTF-8"/>
@@ -270,7 +270,7 @@ var currentEmail = '';
 var clientData = null;
 
 function login() {
-  var email = document.getElementById('loginEmail').value.trim();
+  var email = document.getElementById('loginEmail').value.trim().toLowerCase();
   if (!email || email.indexOf('@') === -1) { showLoginAlert('Please enter a valid email address.', 'error'); return; }
   currentEmail = email;
   loadDashboard(email);
@@ -403,7 +403,9 @@ function renderDashboard(data) {
         card.appendChild(actions);
         list.appendChild(card);
       });
-    }())
+    }());
+  } else {
+    document.getElementById('articlesList').innerHTML = '<div class="empty-state"><div class="empty-icon">&#9998;</div><div class="empty-title">No articles yet</div><p style="font-size:14px;color:var(--muted);margin-top:6px">Your first article will appear here once it has been generated.</p></div>';
   }
 
   // CMS
@@ -419,9 +421,6 @@ function renderDashboard(data) {
   if (client.wordpress_username) document.getElementById('d-wp-user').value = client.wordpress_username;
   if (client.shopify_domain) document.getElementById('d-sh-domain').value = client.shopify_domain;
 }
-  } else {
-    document.getElementById('articlesList').innerHTML = '<div class="empty-state"><div class="empty-icon">&#9998;</div><div class="empty-title">No articles yet</div><p style="font-size:14px;color:var(--muted);margin-top:6px">Your first article will appear here once it has been generated.</p></div>';
-  }
 
 function setCMSOption(type) {
   ['none','wordpress','shopify'].forEach(function(t){
