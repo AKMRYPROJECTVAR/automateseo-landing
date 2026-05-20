@@ -344,6 +344,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 var BACKEND='https://automateseo-backend-production.up.railway.app';
 var state={websiteUrl:'',brandName:'',language:'en-AU',country:'AU',reach:'local',targetCities:'',businessDesc:'',exclusions:[],services:[],priorityService:'',competitors:[],email:'',cms_type:'none'};
 var analysisPromise=null;
+async function backendReady(){
+  try {
+    var resp = await fetch(BACKEND + '/', { cache: 'no-store' });
+    if (!resp.ok) return false;
+    var data = await resp.json();
+    return !!(data && data.status && data.status.indexOf('AutomateSEO backend running') !== -1);
+  } catch(e) {
+    return false;
+  }
+}
+function showBackendDown(){
+  alert('Checkout is temporarily unavailable while we finish a backend maintenance fix. Please email hello@automateseo.com.au and we will activate your trial manually.');
+}
 function goTo(id){document.querySelectorAll('.step-page').forEach(function(p){p.classList.remove('active');});document.getElementById(id).classList.add('active');updateProg(id);window.scrollTo(0,0);}
 function updateProg(id){var bar=document.getElementById('progressBar');if(id==='step1'||id==='step1b'){bar.style.display='none';return;}bar.style.display='block';var simple=(id==='step4'||id==='step5');var cur=simple?(id==='step4'?2:3):({step2:2,step3:3,step4:4,step5:5}[id]||2);['1','2','3','4','5'].forEach(function(n){var d=document.getElementById('dot'+n);if(!d)return;d.style.display=(!simple||Number(n)<=3)?'flex':'none';d.className='step-dot';if(Number(n)<cur){d.classList.add('done');d.innerHTML='';}else if(Number(n)===cur){d.classList.add('active');d.innerHTML=n;}else{d.innerHTML=n;}});[['12',1],['23',2],['34',3],['45',4]].forEach(function(pair){var el=document.getElementById('line'+pair[0]);if(!el)return;el.style.display=(!simple||pair[1]<3)?'block':'none';el.className='step-line'+(pair[1]<cur?' done':'');});}
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
@@ -388,6 +401,7 @@ function saveEmailAndContinue() {
 }
 async function finishSignup() {
   if (!state.email) { alert('Please enter your email first.'); goTo('step4'); return; } if(state.cms_type==='wordpress'&&(!state.wordpress_url||!state.wordpress_username||!state.wordpress_app_password)){alert('Please fill in all WordPress fields, or select I will connect later.');return;} if(state.cms_type==='shopify'&&(!state.shopify_domain||!state.shopify_access_token)){alert('Please fill in all Shopify fields, or select I will connect later.');return;}
+  if (!(await backendReady())) { showBackendDown(); return; }
   if (analysisPromise) { try { await Promise.race([analysisPromise, sleep(1200)]); } catch(e) {} }
   try { await fetch(BACKEND + '/api/onboarding', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(state) }); } catch(e) {}
     // Save CMS credentials before Stripe checkout — prevents webhook overwrite race condition
